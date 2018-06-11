@@ -48,7 +48,10 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/pages/index.html'
+    }),
     new ExtractTextPlugin({
       filename: 'styles.css',
       disable: !isProd,
