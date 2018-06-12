@@ -27,3 +27,17 @@ list_posts:
   path: /posts
   defaults: { _controller: 'App\Controllers\PostController::listAction' }
   methods: [GET]
+
+#### ACCOUNT ROUTES ###
+
+# CONNEXION #
+login:
+  path: /login
+  defaults: { _controller: 'App\Controllers\AuthController::loginAction'}
+  methods:  [GET]
+
+# INSCRIPTION #
+create_user:
+  path: /register
+  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
+  methods:  [GET]
