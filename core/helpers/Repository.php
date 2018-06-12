@@ -1,6 +1,6 @@
 <?php
 namespace App\Helpers;
-class Model
+class Repository
 {
     /**
      * @var \PDO

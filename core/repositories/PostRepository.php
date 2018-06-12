@@ -1,15 +1,16 @@
 <?php
-namespace App\Models;
+namespace App\Repositories;
 
 use App\Entities\Post;
-use App\Helpers\Model;
-class PostModel extends Model
+use App\Helpers\Repository;
+class PostRepository extends Repository
 {
     /**
-     * @param $data
-     * @return string
+     * Create a Post inside database
+     * @param Post $post - Post entity containing data to insert in database
+     * @return Post - Post entity containing recently inserted data with row's ID
      */
-    public function create($post)
+    public function create($post): Post
     {
         $sql = "INSERT INTO `posts`
         (`title`,
@@ -31,9 +32,12 @@ class PostModel extends Model
         $stmt->bindValue(':visibility', $post->visibility);
         $stmt->bindValue(':slug', $post->slug);
 
-        $stmt->execute;
+        $stmt->execute();
 
-        return $db->lastInsertId();
+        // TODO: Check errors and throw
+
+        $post->id = $db->lastInsertId();
+        return $post;
     }
 
     /**
