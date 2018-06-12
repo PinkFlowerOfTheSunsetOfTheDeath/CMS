@@ -1,0 +1,232 @@
+/* line 1, ../../front/sass/global/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 12, ../../front/sass/global/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 16, ../../front/sass/global/_reset.scss */
+body {
+  background-color: #fafafa;
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+/* line 22, ../../front/sass/global/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../front/sass/global/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 31, ../../front/sass/global/_reset.scss */
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+/* line 38, ../../front/sass/global/_reset.scss */
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 44, ../../front/sass/global/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* @font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+} */
+/*
+colors
+*/
+/*
+include in your content like this
+
+ p {
+  font-size: 16px;
+
+  @include tablet {
+    font-size: 18px;
+  }
+
+  @include desktop {
+    font-size: 20px;
+  }
+}
+
+*/
+/* line 1, ../../front/sass/global/_layout.scss */
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+/* line 4, ../../front/sass/global/_layout.scss */
+.container--mini {
+  width: 800px;
+}
+/* line 7, ../../front/sass/global/_layout.scss */
+.container--height {
+  min-height: 100vh;
+}
+/* line 10, ../../front/sass/global/_layout.scss */
+.container--centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 16, ../../front/sass/global/_layout.scss */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 20, ../../front/sass/global/_layout.scss */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 1, ../../front/sass/pages/_connection.scss */
+.connection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 5, ../../front/sass/pages/_connection.scss */
+.connection__container {
+  display: flex;
+  flex-direction: column;
+}
+/* line 9, ../../front/sass/pages/_connection.scss */
+.connection__userImage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+/* line 14, ../../front/sass/pages/_connection.scss */
+.connection__card {
+  padding: 24px;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+/* line 20, ../../front/sass/pages/_connection.scss */
+.connection__title {
+  text-align: center;
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+/* line 26, ../../front/sass/pages/_connection.scss */
+.connection__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+/* line 30, ../../front/sass/pages/_connection.scss */
+.connection__field label {
+  font-size: 17px;
+  font-size: 1.0625rem;
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+/* line 36, ../../front/sass/pages/_connection.scss */
+.connection__field input {
+  width: 270px;
+  border-radius: 20px;
+  border: 1px solid #474bcb;
+  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 12px 20px;
+}
+/* line 42, ../../front/sass/pages/_connection.scss */
+.connection__field input::placeholder {
+  color: #999999;
+}
+/* line 46, ../../front/sass/pages/_connection.scss */
+.connection__field:last-child {
+  margin-bottom: 0;
+}
+/* line 50, ../../front/sass/pages/_connection.scss */
+.connection__field--double input {
+  margin-bottom: 10px;
+}
+/* line 55, ../../front/sass/pages/_connection.scss */
+.connection__forgetPsw {
+  margin-top: 2px;
+}
+/* line 57, ../../front/sass/pages/_connection.scss */
+.connection__forgetPsw a {
+  text-decoration: none;
+  color: #474bcb;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 63, ../../front/sass/pages/_connection.scss */
+.connection__linksContainer {
+  text-align: center;
+}
+/* line 66, ../../front/sass/pages/_connection.scss */
+.connection__links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+/* line 70, ../../front/sass/pages/_connection.scss */
+.connection__links button {
+  border-radius: 20px;
+  background-color: #474bcb;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 9px 0;
+  width: 100%;
+  border: none;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+/* line 82, ../../front/sass/pages/_connection.scss */
+.connection__links a {
+  text-decoration: none;
+  color: #474bcb;
+  margin-top: 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  position: relative;
+}
+/* line 91, ../../front/sass/pages/_connection.scss */
+.connection__links a:hover:before {
+  width: 100%;
+}
+/* line 95, ../../front/sass/pages/_connection.scss */
+.connection__links a:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #474bcb;
+  transition: 0.4s ease-in-out;
+}
