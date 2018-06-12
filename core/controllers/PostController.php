@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\PostModel;
+use Symfony\Component\HttpFoundation\Request;
 
 class  PostController extends BaseController
 {
@@ -17,13 +18,14 @@ class  PostController extends BaseController
     }
 
     /**
-     * @param $data
+     * @param $request
      * @return string
      */
-    public function saveAction($data)
+    public function saveAction(Request $request)
     {
-        $postModel = new PostModel();
-        return $postModel->create($data);
+
+        //$postModel = new PostModel();
+        //return $postModel->create($request);
     }
 
     /**

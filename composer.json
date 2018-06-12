@@ -5,7 +5,12 @@
         "symfony/yaml": "^4.1",
         "symfony/http-foundation": "^4.1",
         "twig/twig": "^2.4",
-        "symfony/config": "^4.1"
+        "symfony/config": "^4.1",
+<<<<<<< Updated upstream
+=======
+        "symfony/form": "^4.1",
+>>>>>>> Stashed changes
+        "symfony/validator": "^4.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1"
@@ -14,7 +19,12 @@
       "psr-4": {
         "App\\Controllers\\": "core/controllers/",
         "App\\Helpers\\": "core/helpers/",
-        "App\\Models\\": "core/models/"
+<<<<<<< Updated upstream
+        "App\\Models\\": "core/models/",
+        "App\\Entities\\": "core/entities"
+=======
+        "App\\Models\\": "core/repositories/"
+>>>>>>> Stashed changes
       }
     }
 }
