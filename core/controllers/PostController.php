@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use App\Entities\Post;
+use App\Helpers\Entity;
 use App\Models\PostModel;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,14 +20,20 @@ class  PostController extends BaseController
     }
 
     /**
-     * @param $request
-     * @return string
+     * @return string|array
      */
-    public function saveAction(Request $request)
+    public function saveAction()
     {
+        $postModel = new PostModel();
+        $post = new Post($_POST);
+        $validateViolations = $post->validate();
 
-        //$postModel = new PostModel();
-        //return $postModel->create($request);
+        if (count($validateViolations)!== 0) {
+            return $validateViolations;
+        } else {
+            $postModel->create($post);
+        }
+
     }
 
     /**

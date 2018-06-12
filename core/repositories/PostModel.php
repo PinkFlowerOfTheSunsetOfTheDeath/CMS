@@ -10,7 +10,7 @@ class PostModel extends Model
      * @param $data
      * @return string
      */
-    public function create($data)
+    public function create($post)
     {
         $sql = "INSERT INTO `posts`
         (`title`,
@@ -27,10 +27,10 @@ class PostModel extends Model
         $db = $this->getDB();
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(':title', $data['title']);
-        $stmt->bindValue(':content', $data['content']);
-        $stmt->bindValue(':visibility', $data['visibility']);
-        $stmt->bindValue(':slug', $data['slug']);
+        $stmt->bindValue(':title', $post->title);
+        $stmt->bindValue(':content', $post->content );
+        $stmt->bindValue(':visibility', $post->visibility);
+        $stmt->bindValue(':slug', $post->slug);
 
         $stmt->execute;
 
