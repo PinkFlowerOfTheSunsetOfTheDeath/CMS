@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Marie CHARLES
- * Date: 12/06/2018
- * Time: 11:34
- */
+
+namespace App\Helpers;
 
 class Model
 {
@@ -15,7 +11,11 @@ class Model
         $this->db = Database::getDB();
     }
 
-    public function getDB()
+    /**
+     * Will be called for each model to get Database
+     * @return null|PDO
+     */
+    protected function getDB()
     {
         return $this->db;
     }

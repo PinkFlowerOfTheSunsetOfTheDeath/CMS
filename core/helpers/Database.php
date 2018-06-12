@@ -1,15 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Marie CHARLES
- * Date: 12/06/2018
- * Time: 11:26
- */
+
+namespace App\Helpers;
 
 class Database
 {
     private static $db = null;
 
+    /**
+     * Get PDO instance from user database config
+     * @return null|PDO
+     */
     public static function getDB()
     {
         if (is_null(self::$db)) {

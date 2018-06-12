@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Marie CHARLES
- * Date: 12/06/2018
- * Time: 10:55
- */
 
 namespace App\Controllers;
 
-
-class  PostController extends BaseController
+class PostController extends BaseController
 {
 
     /**
