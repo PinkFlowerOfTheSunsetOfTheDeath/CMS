@@ -1,6 +1,7 @@
 <?php
 namespace App\Entities;
 use App\Helpers\Entity;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class Post extends Entity {
     /**
@@ -41,7 +42,12 @@ class Post extends Entity {
     {
         return [
             'title' => [
+                new NotBlank()
+            ],
+            'slug' => [
+                new NotBlank()
             ]
+
         ];
     }
 }
