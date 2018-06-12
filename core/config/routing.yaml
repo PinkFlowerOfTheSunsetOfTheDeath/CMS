@@ -27,3 +27,7 @@ list_posts:
   path: /posts
   defaults: { _controller: 'App\Controllers\PostController::listAction' }
   methods: [GET]
+
+view_post:
+  path: /posts/{id}
+  defaults: { _controller: 'App\Controllers\PostController::viewAction' }
