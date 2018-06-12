@@ -85,3 +85,8 @@ include in your content like this
 .container--height {
   min-height: 100vh;
 }
+
+/* line 1, ../sass/pages/_connection.scss */
+body {
+  background-color: red;
+}
