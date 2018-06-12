@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-
 class BaseController {
 
     /**
@@ -39,5 +38,4 @@ class BaseController {
         $twig = self::initializeTwig();
         return $twig->render('error.html.twig', ['message' => $message]);
     }
-
 }
