@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\PostModel;
 
 class PostController extends BaseController
 {
@@ -16,8 +17,12 @@ class PostController extends BaseController
         return $this->render('newPost.html.twig');
     }
 
-    public function saveAction()
+    /**
+     * @param $data
+     */
+    public function saveAction($data)
     {
-
+        $postModel = new PostModel();
+        return $postModel->create($data);
     }
 }

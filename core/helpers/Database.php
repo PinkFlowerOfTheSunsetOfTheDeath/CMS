@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class Database
 {
+    /**
+     * @var \PDO
+     */
     private static $db = null;
 
     /**
