@@ -20,6 +20,11 @@ class Post extends Entity {
     public $content = '';
 
     /**
+     * @var string
+     */
+    public $slug = '';
+
+    /**
      * @var \DateTime
      */
     public $created_at;
