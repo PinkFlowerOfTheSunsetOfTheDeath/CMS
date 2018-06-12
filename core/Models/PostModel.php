@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Entities\Post;
 use App\Helpers\Model;
 
 class PostModel extends Model
@@ -36,15 +37,20 @@ class PostModel extends Model
         return $db->lastInsertId();
     }
 
-    public function getAll($slug = null, $id = null)
+    /**
+     * @param string $slug
+     * @param int $id
+     * @return array
+     */
+    public function getAll($slug = '', $id = 0)
     {
         $sql = 'SELECT `id`, `title`, `content`, `created_at`, `updated_at`, `visibility`, `slug` FROM `posts`';
 
         $sqlCond = [];
-        if (!is_null($slug)) {
+        if (!empty($slug)) {
             $sqlCond[] = '`slug` = :slug\n';
         }
-        if (!is_null($id)) {
+        if (!empty($id)) {
             $sqlCond[] = '`id` = :id\n';
         }
 
@@ -53,14 +59,21 @@ class PostModel extends Model
         }
 
         $stmt = $this->getDB()->prepare($sql);
-        if (!is_null($slug)) {
+        if (!empty($slug)) {
             $stmt->bindValue(':slug', $slug);
         }
-        if (!is_null($id)) {
+        if (!empty($id)) {
             $stmt->bindValue(':id', $id);
         }
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        // Transform fetched data to Post entities
+        $posts = [];
+        foreach ($rows as $row) {
+            $posts[] = new Post($row);
+        }
+        return $posts;
     }
 
     public function findAll()
