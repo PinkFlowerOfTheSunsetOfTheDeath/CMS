@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Models;
+
 use App\Entities\Post;
 use App\Helpers\Model;
-
 class PostModel extends Model
 {
     /**
@@ -48,14 +47,14 @@ class PostModel extends Model
 
         $sqlCond = [];
         if (!empty($slug)) {
-            $sqlCond[] = '`slug` = :slug\n';
+            $sqlCond[] = '`slug` = :slug';
         }
         if (!empty($id)) {
-            $sqlCond[] = '`id` = :id\n';
+            $sqlCond[] = '`id` = :id';
         }
 
         if (count($sqlCond) > 0) {
-            $sql .= 'WHERE ' . implode(" AND", $sqlCond);
+            $sql .= ' WHERE ' . implode(" AND", $sqlCond);
         }
 
         $stmt = $this->getDB()->prepare($sql);
@@ -76,13 +75,14 @@ class PostModel extends Model
         return $posts;
     }
 
-    public function findAll()
+    /**
+     * Get a Single Post by ID
+     * @param int $id - ID of the Post to retrieve
+     * @return array|Post - Post Entity from Database
+     */
+    public function getById(int $id)
     {
-        $db = $this->getDB();
-        $sql = 'SELECT `id`, `title`, `content`, `created_at`, `updated_at`, `visibility`, `slug` FROM `posts`';
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-        $rows = $stmt->fetchAll();
-        return $rows;
+        $post = current($this->getAll('', $id));
+        return $post;
     }
 }
