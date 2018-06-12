@@ -2,6 +2,8 @@
 namespace App\Helpers;
 
 
+use Symfony\Component\Validator\Validation;
+
 class Entity
 {
     /**
@@ -35,15 +37,21 @@ class Entity
         return [];
     }
 
+    /**
+     * Check entity rules and return errors if request does not match with them
+     * @return array
+     */
     public function validate()
     {
         $rules = $this->rules();
         $violations = [];
+        $validator = Validation::createValidator();
 
-//        $validator =
-        foreach ($rules as $ruleName => $ruleValidations) {
-//            $ruleViolations =
+        foreach ($rules as $rule => $ruleValidation) {
+            $violation = $validator->validate($this->{$rule}, $ruleValidation);
+            $violations = array_merge($violations, $violation);
         }
+
         return $violations;
     }
 }
