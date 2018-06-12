@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Config\FileLocator;
@@ -13,7 +13,7 @@ use App\Controllers\BaseController;
 $request = Request::createFromGlobals();
 
 // Loader configuration file for routing
-$fileLocator = new FileLocator([__DIR__ . '/core/config']);
+$fileLocator = new FileLocator([__DIR__ . '/../core/config']);
 $loader = new YamlFileLoader($fileLocator);
 $routes = $loader->load('routing.yaml');
 
