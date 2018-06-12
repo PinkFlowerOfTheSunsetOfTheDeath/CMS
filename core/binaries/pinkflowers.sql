@@ -83,7 +83,7 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `content` text,
-  `created_at` datetime NOT NULL,
+  `created_at` datetime DEFAULT NOW(),
   `updated_at` datetime DEFAULT NULL,
   `visibility` tinyint(1) DEFAULT '1',
   `slug` varchar(50) NOT NULL,
