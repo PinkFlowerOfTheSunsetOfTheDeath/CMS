@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Helpers;
-
 class Model
 {
+    /**
+     * @var \PDO
+     */
     private $db;
 
     public function __construct()
@@ -13,7 +14,7 @@ class Model
 
     /**
      * Will be called for each model to get Database
-     * @return null|PDO
+     * @return \PDO
      */
     protected function getDB()
     {
