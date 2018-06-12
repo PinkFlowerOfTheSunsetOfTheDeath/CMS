@@ -23,4 +23,7 @@ save_post:
   defaults: { _controller: 'App\Controllers\PostController::saveAction'}
   methods:  [POST]
 
-
+list_posts:
+  path: /posts
+  defaults: { _controller: 'App\Controllers\PostController::listAction' }
+  methods: [GET]
