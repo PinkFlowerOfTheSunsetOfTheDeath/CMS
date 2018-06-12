@@ -9,3 +9,18 @@ hello:
 test:
   path: /test
   defaults: { _controller: 'App\Controllers\HelloController::helloAction'}
+
+#### POSTS ROUTES ###
+
+# POSTS #
+create_post:
+  path: /posts/create
+  defaults: { _controller: 'App\Controllers\PostController::createAction'}
+  methods:  [GET]
+
+save_post:
+  path: /posts/create
+  defaults: { _controller: 'App\Controllers\PostController::saveAction'}
+  methods:  [POST]
+
+

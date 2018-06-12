@@ -22,7 +22,7 @@ class BaseController {
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function render(string $fileName, array $variables): string {
+    public function render(string $fileName, array $variables = []): string {
         $twig = self::initializeTwig();
         return $twig->render($fileName, $variables);
     }
