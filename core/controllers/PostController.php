@@ -101,13 +101,13 @@ class  PostController extends Controller
      */
     public function deleteAction($id)
     {
-        $postModel = new PostRepository();
-        $postToDelete = $postModel->getById($id);
+        $postRepository = new PostRepository();
+        $postToDelete = $postRepository->getById($id);
         if (empty($postToDelete)) {
             header("Location: /posts");
             exit;
         }
-        $postModel->deleteById($id);
+        $postRepository->deleteById($id);
         header("Location: /posts");
     }
 

@@ -125,7 +125,23 @@ class CategoryRepository extends Repository
         $stmt->execute();
 
         $this->errorManagement($stmt);
+    }
+    /**
+     * Delete ONE category by its given id
+     * @param $id
+     * @return bool
+     */
+    public function delete($id)
+    {
+        $sql = "DELETE from `categories`
+        WHERE `id` = :id
+        LIMIT 1";
 
+        $stmt = $this->getDB()->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
         return true;
     }
 }
