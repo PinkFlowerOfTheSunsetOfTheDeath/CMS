@@ -12,6 +12,8 @@ use Twig\Error\Error;
  */
 class CategoryController extends Controller
 {
+    const ERROR__NOT_FOUND = 'Category not found for id: ';
+
     /**
      * Create a Category via the category creation Form
      * @return string - HTML Layout for categories creation form
@@ -50,5 +52,27 @@ class CategoryController extends Controller
             $this->redirect('/categories/create');
             exit;
         }
+    }
+
+    /**
+     * Edit a category - get update form
+     * @param int $id - ID of category to edit
+     * @return string - HTML Layout for category edition
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function editAction(int $id): string
+    {
+        $categoryRepository = new CategoryRepository();
+        $category = $categoryRepository->getById($id);
+
+        if (empty($category)) {
+            $error = self::ERROR__NOT_FOUND . $id;
+            $this->redirectWithError('/categories', $error);
+            exit;
+        }
+
+        return $this->render('categories/form.html.twig', ['category' => $category]);
     }
 }
