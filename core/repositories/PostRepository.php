@@ -96,11 +96,10 @@ class PostRepository extends Repository
         WHERE `id` = :id
         LIMIT 1";
 
-
-        $stmt = $this->getDB()->prepare();
+        $stmt = $this->getDB()->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
-        return $this->getDB();
+        return true;
     }
 }

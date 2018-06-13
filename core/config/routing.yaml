@@ -45,6 +45,11 @@ login:
   defaults: { _controller: 'App\Controllers\AuthController::loginAction'}
   methods:  [GET]
 
+getUser:
+  path: /login
+  defaults: { _controller: 'App\Controllers\AuthController::getAccount'}
+  methods:  [POST]
+
 # INSCRIPTION #
 create_user:
   path: /register

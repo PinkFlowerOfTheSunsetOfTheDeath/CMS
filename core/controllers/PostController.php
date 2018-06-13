@@ -79,8 +79,8 @@ class  PostController extends BaseController
      */
     public function viewAction($id): string
     {
-        $postModel = new PostRepository();
-        $post = $postModel->getById($id);
+        $postRepository = new PostRepository();
+        $post = $postRepository->getById($id);
 
         if (empty($post)) {
             $error = "Post with id: $id does not exist";
