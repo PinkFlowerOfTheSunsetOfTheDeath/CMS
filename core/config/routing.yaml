@@ -50,6 +50,10 @@ create_category:
   defaults: { _controller: 'App\Controllers\CategoryController::createAction' }
   methods: [GET]
 
+save_cateogry:
+  path: /categories/create
+  defaults: { _controller: 'App\Controllers\CategoryController::saveAction' }
+  methods: [POST]
 
 #### ACCOUNT ROUTES ###
 
