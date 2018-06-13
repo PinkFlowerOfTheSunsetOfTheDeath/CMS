@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>♠️Icon/classic/visibility/fills</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,5 C7.14077289,5.0028941 2.77778551,7.97765822 1,12.5 C2.7756797,17.0239419 7.14005262,19.9994209 12,19.9994209 C16.8599474,19.9994209 21.2243203,17.0239419 23,12.5 C21.2222145,7.97765822 16.8592271,5.0028941 12,5 Z M12,17.5 C9.23857625,17.5 7,15.2614237 7,12.5 C7,9.73857625 9.23857625,7.5 12,7.5 C14.7614237,7.5 17,9.73857625 17,12.5 C17,15.2614237 14.7614237,17.5 12,17.5 Z M12,9.5 C10.3431458,9.5 9,10.8431458 9,12.5 C9,14.1568542 10.3431458,15.5 12,15.5 C13.6568542,15.5 15,14.1568542 15,12.5 C15,10.8431458 13.6568542,9.5 12,9.5 Z" id="path-1"></path>
+    </defs>
+    <g id="♠️Icon/classic/visibility/fills" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="🎨Color/black/100%" mask="url(#mask-2)" fill="#000000">
+            <rect id="Color" x="0" y="0" width="24" height="24"></rect>
+        </g>
+    </g>
+</svg>

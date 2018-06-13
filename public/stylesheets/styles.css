@@ -49,10 +49,6 @@ table {
   border-spacing: 0;
 }
 
-/* @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
-} */
 /*
 colors
 */
@@ -91,15 +87,31 @@ include in your content like this
   justify-content: center;
   align-items: center;
 }
+/* line 15, ../../front/sass/global/_layout.scss */
+.container--header {
+  margin-top: 70px;
+}
 
-/* line 16, ../../front/sass/global/_layout.scss */
+/* line 20, ../../front/sass/global/_layout.scss */
+.body--colored {
+  background-color: rgba(0, 176, 255, 0.1);
+}
+
+/* line 24, ../../front/sass/global/_layout.scss */
 body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 20, ../../front/sass/global/_layout.scss */
+/* line 28, ../../front/sass/global/_layout.scss */
 * {
   font-family: 'Roboto', sans-serif;
+}
+
+/* line 32, ../../front/sass/global/_layout.scss */
+.link {
+  text-decoration: none;
+  color: black;
+  padding: 5px 2px;
 }
 
 /* line 1, ../../front/sass/pages/_connection.scss */
@@ -243,4 +255,216 @@ body {
   height: 1px;
   background-color: #474bcb;
   transition: 0.4s ease-in-out;
+}
+
+/* line 1, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -20px;
+}
+/* line 5, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__content {
+  width: 70%;
+  padding: 0 20px;
+}
+/* line 9, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside {
+  width: 30%;
+}
+/* line 11, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.13);
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+/* line 17, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__title {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 120%;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+/* line 23, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tagsList {
+  display: flex;
+  margin: 0 -5px;
+}
+/* line 27, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tags {
+  padding: 0 5px;
+}
+/* line 29, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tags--inactive {
+  display: none;
+}
+/* line 32, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tags span {
+  background-color: #8bc34a;
+  padding: 5px 5px;
+  color: white;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 39, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__undertitle {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+
+/* line 1, ../../front/sass/components/_header.scss */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+/* line 11, ../../front/sass/components/_header.scss */
+.header__list {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+/* line 17, ../../front/sass/components/_header.scss */
+.header__list > div {
+  display: flex;
+  align-items: center;
+}
+/* line 21, ../../front/sass/components/_header.scss */
+.header__list__logo {
+  display: inline-block;
+  height: 30px;
+}
+/* line 26, ../../front/sass/components/_header.scss */
+.header__list__item:first-child {
+  margin-right: 10px;
+}
+/* line 29, ../../front/sass/components/_header.scss */
+.header__list__item--centered {
+  display: flex;
+  align-items: center;
+}
+/* line 34, ../../front/sass/components/_header.scss */
+.header__list__userImg {
+  background-color: grey;
+  border-radius: 100%;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* line 1, ../../front/sass/components/_aside.scss */
+.aside {
+  position: fixed;
+  background-color: #fcfcfc;
+  height: calc(100vh - 50px);
+  top: 50px;
+}
+/* line 6, ../../front/sass/components/_aside.scss */
+.aside__searchBar {
+  background-color: transparent;
+  border: none;
+  margin-left: 20px;
+  position: relative;
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+/* line 13, ../../front/sass/components/_aside.scss */
+.aside__searchBar__container {
+  position: relative;
+}
+/* line 17, ../../front/sass/components/_aside.scss */
+.aside__searchBar__container--active .aside__searchBar__outline:after {
+  width: 100%;
+  left: 0;
+}
+/* line 24, ../../front/sass/components/_aside.scss */
+.aside__searchBar__outline {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 37px);
+  height: 2px;
+  background-color: transparent;
+  left: 15px;
+}
+/* line 31, ../../front/sass/components/_aside.scss */
+.aside__searchBar__outline:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+/* line 40, ../../front/sass/components/_aside.scss */
+.aside__searchBar__outline:after {
+  content: '';
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+  height: 1px;
+  background-color: green;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* line 52, ../../front/sass/components/_aside.scss */
+.aside__list {
+  display: flex;
+  flex-direction: column;
+}
+/* line 55, ../../front/sass/components/_aside.scss */
+.aside__list__item {
+  padding: 5px 0 5px 20px;
+  margin-top: 15px;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 130%;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  color: #757575;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* line 66, ../../front/sass/components/_aside.scss */
+.aside__list__item:hover {
+  color: #00b0ff;
+}
+/* line 69, ../../front/sass/components/_aside.scss */
+.aside__list__item span {
+  margin-left: 5px;
+}
+/* line 72, ../../front/sass/components/_aside.scss */
+.aside__list__item i {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+/* line 74, ../../front/sass/components/_aside.scss */
+.aside__list__item i:before {
+  display: block;
+}
+/* line 78, ../../front/sass/components/_aside.scss */
+.aside__list__item:first-child {
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+/* line 83, ../../front/sass/components/_aside.scss */
+.aside__list__item--active {
+  color: #00b0ff;
 }

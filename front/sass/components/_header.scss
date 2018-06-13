@@ -1,0 +1,44 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  &__list {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+    &__logo {
+      display: inline-block;
+      height: 30px;
+    }
+    &__item {
+      &:first-child {
+        margin-right: 10px;
+      }
+      &--centered {
+        display: flex;
+        align-items: center;
+      }
+    }
+    &__userImg {
+      background-color: grey;
+      border-radius: 100%;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+}

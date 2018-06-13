@@ -2,11 +2,14 @@
 colors
 */
 
-$blue-light : #00b0ff;
-$red : #df1b1b;
+$blue-light: #00b0ff;
+$blue-light-2: rgba(0, 176, 255, 0.1);
+$red: #df1b1b;
+$green : #8bc34a;
 
+$size-header: 50px;
 
-  // Media queries
+// Media queries
 $s-width: 768px; // small width
 $m-width: 992px; // medium width
 $l-width: 1200px; // large width
