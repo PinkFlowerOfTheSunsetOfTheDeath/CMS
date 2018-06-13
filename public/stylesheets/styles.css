@@ -297,6 +297,10 @@ body {
   padding: 0 5px;
 }
 /* line 29, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__tags--inactive {
+  display: none;
+}
+/* line 32, ../../front/sass/pages/_articleList.scss */
 .articleList__aside__tags span {
   background-color: #8bc34a;
   padding: 5px 5px;
@@ -304,7 +308,7 @@ body {
   font-size: 14px;
   font-size: 0.875rem;
 }
-/* line 36, ../../front/sass/pages/_articleList.scss */
+/* line 39, ../../front/sass/pages/_articleList.scss */
 .articleList__aside__undertitle {
   margin-top: 10px;
   margin-bottom: 5px;
