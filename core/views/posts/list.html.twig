@@ -1,9 +1,18 @@
-<h1>Yo</h1>
-<ul>
-    {% for post in posts %}
-        <li>{{ post.title }}</li>
-    {% endfor %}
-    {% if error %}
-        {{ error }}
-    {% endif %}
-</ul>
+{% extends 'template/template.html.twig' %}
+
+
+{% block body %}
+    <h2>Add an article</h2>
+    <div style="display: flex; flex-direction: column">
+    <input type="text">
+    <textarea name="" id="" cols="30" rows="10" placeholder="wysiwyg"></textarea>
+    </div>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.title }}</li>
+        {% endfor %}
+        {% if error %}
+            {{ error }}
+        {% endif %}
+    </ul>
+{% endblock %}

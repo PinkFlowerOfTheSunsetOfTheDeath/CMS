@@ -1,0 +1,40 @@
+.aside {
+  position: fixed;
+  background-color: #fcfcfc;
+  height: calc(100vh - #{$size-header});
+  top: $size-header;
+  &__searchBar {
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    &__item {
+      padding: 5px 0 5px 20px;
+      @include font-size(14);
+      line-height: 130%;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      color: #757575;
+      span {
+        margin-left: 5px;
+      }
+      i {
+        @include font-size(18);
+        &:before {
+          display: block;
+        }
+      }
+      &:first-child {
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      &--active {
+        color: $blue-light;
+      }
+    }
+  }
+}

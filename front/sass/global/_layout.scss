@@ -12,6 +12,14 @@
     justify-content: center;
     align-items: center;
   }
+  &--colored {
+    background-color: $blue-light-2;
+  }
+}
+.body {
+  &--colored {
+    background-color: $blue-light-2;
+  }
 }
 body {
   font-family: 'Roboto', sans-serif;
