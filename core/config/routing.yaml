@@ -43,6 +43,14 @@ update_post:
   defaults: { _controller: 'App\Controllers\PostController::updateAction' }
   methods: [POST]
 
+#### CATEGORIES ROUTES ####
+
+create_category:
+  path: /categories/create
+  defaults: { _controller: 'App\Controllers\CategoryController::createAction' }
+  methods: [GET]
+
+
 #### ACCOUNT ROUTES ###
 
 # CONNEXION #
