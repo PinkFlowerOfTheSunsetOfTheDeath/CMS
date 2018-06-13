@@ -83,8 +83,8 @@ class  PostController extends Controller
      */
     public function viewAction($id): string
     {
-        $postModel = new PostRepository();
-        $post = $postModel->getById($id);
+        $postRepository = new PostRepository();
+        $post = $postRepository->getById($id);
 
         if (empty($post)) {
             $error = self::ERROR__POST_NOT_FOUND . $id;
@@ -93,6 +93,22 @@ class  PostController extends Controller
         }
 
         return $this->render('posts/view.html.twig', ['post' => $post]);
+    }
+
+    /**
+     * Delete one post by its given id
+     * @param $id
+     */
+    public function deleteAction($id)
+    {
+        $postModel = new PostRepository();
+        $postToDelete = $postModel->getById($id);
+        if (empty($postToDelete)) {
+            header("Location: /posts");
+            exit;
+        }
+        $postModel->deleteById($id);
+        header("Location: /posts");
     }
 
     /**

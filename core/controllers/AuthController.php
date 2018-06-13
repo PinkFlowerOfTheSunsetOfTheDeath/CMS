@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Helpers\Controller;
+use App\Repositories\UserRepository;
 
 /**
  * Class AuthController
@@ -36,4 +37,34 @@ class AuthController extends Controller
         return $this->render('auth/login.html.twig');
     }
 
+    /**
+     *
+     */
+    public function getAccount()
+    {
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+            $userName = $_POST['username'];
+            $password = $_POST['password'];
+
+            $userRepository = new UserRepository();
+            $user = $userRepository->getByUsername($userName);
+
+            if (empty($user)) {
+                header("Location: /login");
+                exit;
+            }
+
+            $validPassword = $user->checkPassword($password);
+
+            if (!$validPassword) {
+                header("Location: /login");
+                exit;
+            }
+
+            $_SESSION['user'] = $userName;
+            header("Location: /posts");
+        } else {
+            header("Location: /login");
+        }
+    }
 }

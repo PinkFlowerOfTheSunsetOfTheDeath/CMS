@@ -92,6 +92,26 @@ class PostRepository extends Repository
     }
 
     /**
+     * Delete a post by ID
+     * @param int $id - ID of the post to delete
+     * @return bool - True if post was deleted properly
+     * @throws \PDOException - exception raised if error encountered in SQL statement
+     */
+    public function deleteById(int $id)
+    {
+        $sql = "DELETE from `posts`
+        WHERE `id` = :id
+        LIMIT 1";
+
+        $stmt = $this->getDB()->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
+        return true;
+    }
+
+    /**
      * Update a given post entity in Database
      * @param Post $post - Post to update with current values
      * @return bool - True if post got updated properly, else false
@@ -119,7 +139,6 @@ class PostRepository extends Repository
 
         // Manage errors
         $this->errorManagement($stmt);
-
         return true;
     }
 }

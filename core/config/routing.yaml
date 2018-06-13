@@ -33,6 +33,11 @@ view_post:
   defaults: { _controller: 'App\Controllers\PostController::viewAction' }
   methods: [GET]
 
+delete_post:
+  path: /posts/{id}/delete
+  defaults: { _controller: 'App\Controllers\PostController::deleteAction' }
+  methods: [GET]
+
 edit_post:
   path: /posts/{id}/edit
   defaults: { _controller: 'App\Controllers\PostController::editAction' }
@@ -50,6 +55,11 @@ login:
   path: /login
   defaults: { _controller: 'App\Controllers\AuthController::loginAction'}
   methods:  [GET]
+
+getUser:
+  path: /login
+  defaults: { _controller: 'App\Controllers\AuthController::getAccount'}
+  methods:  [POST]
 
 # INSCRIPTION #
 create_user:
