@@ -103,4 +103,29 @@ class CategoryRepository extends Repository
         $category->id = $db->lastInsertId();
         return $category;
     }
+
+    /**
+     * Update a category in Database
+     * @param Category $category - Category to update in database
+     * @return bool - true if category has been updated properly
+     * @throws \PDOException - if error encountered while processing SQL statement
+     */
+    public function update(Category $category)
+    {
+        $sql = 'UPDATE `categories`
+                SET 
+                  `label` = :label,
+                  `slug` = :slug
+                WHERE `id` = :id';
+
+        $stmt = $this->getDB()->prepare($sql);
+        $stmt->bindValue(':label', $category->label);
+        $stmt->bindValue(':slug', $category->slug);
+        $stmt->bindValue(':id', $category->id);
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
+
+        return true;
+    }
 }
