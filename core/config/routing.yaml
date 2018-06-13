@@ -60,6 +60,12 @@ save_cateogry:
   defaults: { _controller: 'App\Controllers\CategoryController::saveAction' }
   methods: [POST]
 
+delete_cateogry:
+  path: /categories/delete
+  defaults: { _controller: 'App\Controllers\CategoryController::deleteAction' }
+  methods: [POST]
+
+
 #### ACCOUNT ROUTES ###
 
 # CONNEXION #

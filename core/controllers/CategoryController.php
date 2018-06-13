@@ -51,4 +51,20 @@ class CategoryController extends Controller
             exit;
         }
     }
+
+    /**
+     * Delete one category by its given id
+     * @param $id
+     */
+    public function deleteAction($id)
+    {
+        $categoryRepository = new CategoryRepository();
+        $categoryToDelete = $categoryRepository->getById($id);
+        if (empty($categoryToDelete)) {
+            header("Location: /posts");
+            exit;
+        }
+        $categoryRepository->delete($id);
+        header("Location: /posts");
+    }
 }
