@@ -257,59 +257,59 @@ body {
   transition: 0.4s ease-in-out;
 }
 
-/* line 1, ../../front/sass/pages/_articleList.scss */
-.articleList {
+/* line 1, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd {
   display: flex;
   justify-content: space-between;
   margin: 0 -20px;
 }
-/* line 5, ../../front/sass/pages/_articleList.scss */
-.articleList__content {
+/* line 5, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__content {
   width: 70%;
   padding: 0 20px;
 }
-/* line 9, ../../front/sass/pages/_articleList.scss */
-.articleList__aside {
+/* line 9, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside {
   width: 30%;
 }
-/* line 11, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__card {
+/* line 11, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__card {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.13);
   background-color: white;
   margin-bottom: 20px;
   padding: 20px;
 }
-/* line 17, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__title {
+/* line 17, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__title {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 120%;
   margin: 0 0 10px 0;
   font-weight: 600;
 }
-/* line 23, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__tagsList {
+/* line 23, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tagsList {
   display: flex;
   margin: 0 -5px;
 }
-/* line 27, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__tags {
+/* line 27, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tags {
   padding: 0 5px;
 }
-/* line 29, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__tags--inactive {
+/* line 29, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tags--inactive {
   display: none;
 }
-/* line 32, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__tags span {
+/* line 32, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__tags span {
   background-color: #8bc34a;
   padding: 5px 5px;
   color: white;
   font-size: 14px;
   font-size: 0.875rem;
 }
-/* line 39, ../../front/sass/pages/_articleList.scss */
-.articleList__aside__undertitle {
+/* line 39, ../../front/sass/pages/_articleAdd.scss */
+.articleAdd__aside__undertitle {
   margin-top: 10px;
   margin-bottom: 5px;
   font-weight: 600;
