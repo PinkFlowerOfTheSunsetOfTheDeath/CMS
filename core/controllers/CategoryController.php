@@ -13,10 +13,13 @@ use Twig\Error\Error;
 class CategoryController extends Controller
 {
  const ERROR__NOT_FOUND = 'Category not found for id: ';
-  
+
     /**
      * List all categories found
-     * @return string
+     * @return string - HTML Layout for list categories page
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function listAction()
     {
@@ -26,9 +29,31 @@ class CategoryController extends Controller
         $error = isset($_GET['error']) ? $_GET['error'] : '';
 
         return $this->render('categories/categories.html.twig', [
-            'categories' => $categories
+            'categories' => $categories,
+            'error' => $error
         ]);
+    }
 
+    /**
+     * View a Category in details, by id
+     * @param int $id - ID of the category to view
+     * @return string - HTML layout for detailed category page
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function viewAction(int $id): string
+    {
+        $categoryRepository = new CategoryRepository();
+        $category = $categoryRepository->getById($id);
+
+        if (empty($category)) {
+            $error = self::ERROR__NOT_FOUND . $id;
+            $this->redirectWithError('/categories', $error);
+            exit;
+        }
+
+        return $this->render('categories/view.html.twig', ['category' => $category]);
     }
 
     /**
