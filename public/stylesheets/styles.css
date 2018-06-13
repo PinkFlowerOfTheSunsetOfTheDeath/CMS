@@ -49,77 +49,6 @@ table {
   border-spacing: 0;
 }
 
-/* @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
-} */
-@font-face {
-  font-family: 'icomoon';
-  src: url("../icomoon.eot?styubx");
-  src: url("../fonts/icomoon.eot?styubx#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?styubx") format("truetype"), url("../fonts/icomoon.woff?styubx") format("woff"), url("../fonts/icomoon.svg?styubx#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-/* line 17, ../../front/sass/global/_fonts.scss */
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* line 32, ../../front/sass/global/_fonts.scss */
-.icon-fills:before {
-  content: "\e900";
-}
-
-/* line 35, ../../front/sass/global/_fonts.scss */
-.icon-fills2:before {
-  content: "\e901";
-}
-
-/* line 38, ../../front/sass/global/_fonts.scss */
-.icon-fills3:before {
-  content: "\e902";
-}
-
-/* line 41, ../../front/sass/global/_fonts.scss */
-.icon-fills4:before {
-  content: "\e903";
-}
-
-/* line 44, ../../front/sass/global/_fonts.scss */
-.icon-fills5:before {
-  content: "\e904";
-}
-
-/* line 47, ../../front/sass/global/_fonts.scss */
-.icon-fills6:before {
-  content: "\e905";
-}
-
-/* line 50, ../../front/sass/global/_fonts.scss */
-.icon-fills7:before {
-  content: "\e906";
-}
-
-/* line 53, ../../front/sass/global/_fonts.scss */
-.icon-fills8:before {
-  content: "\e907";
-}
-
-/* line 56, ../../front/sass/global/_fonts.scss */
-.icon-fills9:before {
-  content: "\e908";
-}
-
 /*
 colors
 */
@@ -349,17 +278,18 @@ body {
 /* line 21, ../../front/sass/components/_header.scss */
 .header__list__logo {
   display: inline-block;
+  height: 30px;
 }
-/* line 25, ../../front/sass/components/_header.scss */
+/* line 26, ../../front/sass/components/_header.scss */
 .header__list__item:first-child {
   margin-right: 10px;
 }
-/* line 28, ../../front/sass/components/_header.scss */
+/* line 29, ../../front/sass/components/_header.scss */
 .header__list__item--centered {
   display: flex;
   align-items: center;
 }
-/* line 33, ../../front/sass/components/_header.scss */
+/* line 34, ../../front/sass/components/_header.scss */
 .header__list__userImg {
   background-color: grey;
   border-radius: 100%;
@@ -382,15 +312,58 @@ body {
   background-color: transparent;
   border: none;
   margin-left: 20px;
+  position: relative;
+  padding-right: 20px;
+  padding-bottom: 5px;
 }
-/* line 11, ../../front/sass/components/_aside.scss */
+/* line 13, ../../front/sass/components/_aside.scss */
+.aside__searchBar__container {
+  position: relative;
+}
+/* line 17, ../../front/sass/components/_aside.scss */
+.aside__searchBar__container--active .aside__searchBar__outline:after {
+  width: 100%;
+  left: 0;
+}
+/* line 24, ../../front/sass/components/_aside.scss */
+.aside__searchBar__outline {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 37px);
+  height: 2px;
+  background-color: transparent;
+  left: 15px;
+}
+/* line 31, ../../front/sass/components/_aside.scss */
+.aside__searchBar__outline:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+/* line 40, ../../front/sass/components/_aside.scss */
+.aside__searchBar__outline:after {
+  content: '';
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+  height: 1px;
+  background-color: green;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* line 52, ../../front/sass/components/_aside.scss */
 .aside__list {
   display: flex;
   flex-direction: column;
 }
-/* line 14, ../../front/sass/components/_aside.scss */
+/* line 55, ../../front/sass/components/_aside.scss */
 .aside__list__item {
   padding: 5px 0 5px 20px;
+  margin-top: 15px;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 130%;
@@ -398,26 +371,33 @@ body {
   display: flex;
   align-items: center;
   color: #757575;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-/* line 22, ../../front/sass/components/_aside.scss */
+/* line 66, ../../front/sass/components/_aside.scss */
+.aside__list__item:hover {
+  color: #00b0ff;
+}
+/* line 69, ../../front/sass/components/_aside.scss */
 .aside__list__item span {
   margin-left: 5px;
 }
-/* line 25, ../../front/sass/components/_aside.scss */
+/* line 72, ../../front/sass/components/_aside.scss */
 .aside__list__item i {
   font-size: 18px;
   font-size: 1.125rem;
 }
-/* line 27, ../../front/sass/components/_aside.scss */
+/* line 74, ../../front/sass/components/_aside.scss */
 .aside__list__item i:before {
   display: block;
 }
-/* line 31, ../../front/sass/components/_aside.scss */
+/* line 78, ../../front/sass/components/_aside.scss */
 .aside__list__item:first-child {
+  margin: 0;
   padding: 20px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
-/* line 35, ../../front/sass/components/_aside.scss */
+/* line 83, ../../front/sass/components/_aside.scss */
 .aside__list__item--active {
   color: #00b0ff;
 }
