@@ -8,6 +8,33 @@
             <div>
                 <textarea placeholder="Enter your contents"></textarea>
             </div>
+            <div class="table__container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Creation</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Visibility</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>12/02/2018</td>
+                        <td>Je suis un titre</td>
+                        <td>Neomamz</td>
+                        <td>Visible</td>
+                        <td>
+                            <span class="table__button table__button--edit">Editer</span>
+                            <span class="table__button table__button--delete">Supprimer</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
             <ul>
                 {% for post in posts %}
                     <li>{{ post.title }}</li>
@@ -21,6 +48,11 @@
             <div class="articleAdd__aside__card">
                 <h3 class="articleAdd__aside__title">Choisissez la visibilité de votre article</h3>
                 <p>Etat actuel : <span>Visible</span></p>
+                <div class="button button__switch">
+                    <circle class="toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492.004 492.004"><path fill="floralwhite" d="M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"/></svg>
+                    </circle>
+                </div>
             </div>
             <div class="articleAdd__aside__card">
                 <h3 class="articleAdd__aside__title">Tags</h3>
