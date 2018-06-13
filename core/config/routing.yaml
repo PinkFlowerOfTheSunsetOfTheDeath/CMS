@@ -80,6 +80,10 @@ delete_cateogry:
   defaults: { _controller: 'App\Controllers\CategoryController::deleteAction' }
   methods: [POST]
 
+view_category:
+  path: /categories/{id}
+  defaults: { _controller: 'App\Controllers\CategoryController::viewAction' }
+  methods: [GET]
 
 #### ACCOUNT ROUTES ###
 
