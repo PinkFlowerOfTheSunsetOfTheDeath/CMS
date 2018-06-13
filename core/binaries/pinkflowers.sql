@@ -84,7 +84,7 @@ CREATE TABLE `posts` (
   `title` varchar(100) NOT NULL,
   `content` text,
   `created_at` datetime DEFAULT NOW(),
-  `updated_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NOW(),
   `visibility` tinyint(1) DEFAULT '1',
   `slug` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)

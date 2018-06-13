@@ -3,4 +3,7 @@
     {% for post in posts %}
         <li>{{ post.title }}</li>
     {% endfor %}
+    {% if error %}
+        {{ error }}
+    {% endif %}
 </ul>

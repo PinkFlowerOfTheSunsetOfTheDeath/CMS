@@ -2,12 +2,14 @@
 
 require '../vendor/autoload.php';
 
+session_start();
+
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\HttpFoundation\Request;
-use App\Controllers\BaseController;
+use App\Helpers\Controller;
 
 // Request Object from Http foundation
 $request = Request::createFromGlobals();
@@ -30,7 +32,7 @@ try {
 } catch (Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
     // Display 404.php
     http_response_code(404);
-    echo BaseController::error('You are trying to access a route which does not exist');
+    echo Controller::error('You are trying to access a route which does not exist');
     exit;
 }
 
@@ -41,7 +43,7 @@ $actionName = explode('::', $parameters['_controller'])[1];
 try {
     $controller = new $controllerName();
 } catch (Exception $e) {
-    echo BaseController::error($e->getMessage());
+    echo Controller::error($e->getMessage());
     exit;
 }
 
@@ -53,6 +55,6 @@ unset($parameters['_route']);
 try {
     echo call_user_func_array([$controller, $actionName], $parameters);
 } catch (Exception $e) {
-   echo BaseController::error($e->getMessage());
+   echo Controller::error($e->getMessage());
 }
 
