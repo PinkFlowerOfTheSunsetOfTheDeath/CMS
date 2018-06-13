@@ -45,12 +45,14 @@ class AuthController extends BaseController
 
             if (empty($user)) {
                 header("Location: /login");
+                exit;
             }
 
             $validPassword = $user->checkPassword($password);
 
             if (!$validPassword) {
                 header("Location: /login");
+                exit;
             }
 
             $_SESSION['user'] = $userName;
