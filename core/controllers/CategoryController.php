@@ -27,8 +27,11 @@ class CategoryController extends Controller
     }
 
     /**
-     *
-     * @return string
+     * Save A Category in the Database, validate User Input and manage errors
+     * @return string - HTML Layout for form if
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function saveAction(): string
     {
@@ -36,10 +39,10 @@ class CategoryController extends Controller
         $violations = $category->validate();
 
         if (!empty($violations)) {
-            ErrorManager::setError($violations);
-            $_SESSION['form'] = $_POST;
-            $this->redirect('/categories/create');
-            exit;
+            return $this->render('categories/form.html.twig', [
+                'category' => $category,
+                'errors' => $violations,
+            ]);
         }
         $categoryRepository = new CategoryRepository();
         // try to save category to database, if succeed, redirect to details page, else redirect to creation form
@@ -48,9 +51,10 @@ class CategoryController extends Controller
             $this->redirect("/categories/$category->id");
             exit;
         } catch (\PDOException $e) {
-            ErrorManager::setError([$e->getMessage()]);
-            $this->redirect('/categories/create');
-            exit;
+            return $this->render('categories/form.html.twig', [
+                'category' => $category,
+                'errors' => ['An error occurred while creating the category in the Database'],
+            ]);
         }
     }
 
@@ -74,5 +78,47 @@ class CategoryController extends Controller
         }
 
         return $this->render('categories/form.html.twig', ['category' => $category]);
+    }
+
+    /**
+     * Update a Category in database, validate user input and manage errors
+     * @param int $id - ID of category to update
+     * @return string - HTML Layout for edition form
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function updateAction(int $id)
+    {
+        $categoryRepository = new CategoryRepository();
+        $category = $categoryRepository->getById($id);
+
+        if (empty($category)) {
+            $error = self::ERROR__NOT_FOUND . $id;
+            $this->redirectWithError('/categories/', $error);
+            exit;
+        }
+        // Unset ID if set in POST Object
+        unset($_POST['id']);
+        // Hydrate category with User Input
+        $category->hydrate($_POST);
+        // Validate User Input Data, if error found, rerender edition form with errors
+        $violations = $category->validate();
+        if (!empty($violations)) {
+            return $this->render('categories/form.html.twig', [
+                'category' => $category,
+                'errors' => $violations
+            ]);
+        }
+
+        try {
+            $categoryRepository->update($category);
+            $this->redirect("/categories/$id");
+        } catch (\PDOException $e) {
+            return $this->render('categories/form.html.twig', [
+                'category' => $category,
+                'errors' => ['An error occured while processing category update in the Database']
+            ]);
+        }
     }
 }
