@@ -31,3 +31,8 @@ list_posts:
 view_post:
   path: /posts/{id}
   defaults: { _controller: 'App\Controllers\PostController::viewAction' }
+
+delete_post:
+  path: /posts/{id}
+  defaults: { _controller: 'App\Controllers\PostController::deleteAction' }
+  methods: [POST]

@@ -90,4 +90,16 @@ class  PostController extends BaseController
 
         return $this->render('posts/view.html.twig', ['post' => $post]);
     }
+
+    /**
+     * Delete one post by its given id
+     * @param $id
+     */
+    public function deleteAction($id)
+    {
+        $postModel = new PostRepository();
+        $postModel->deleteById($id);
+        header("Location: /posts");
+
+    }
 }

@@ -89,4 +89,18 @@ class PostRepository extends Repository
         $post = current($this->getAll('', $id));
         return $post;
     }
+
+    public function deleteById($id)
+    {
+        $sql = "DELETE from `posts`
+        WHERE `id` = :id
+        LIMIT 1";
+
+
+        $stmt = $this->getDB()->prepare();
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $this->getDB();
+    }
 }
