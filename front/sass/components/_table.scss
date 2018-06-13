@@ -1,0 +1,40 @@
+.table {
+  width: 100%;
+  background-color: white;
+  @include font-size(16);
+  font-weight: 400;
+  &__button {
+    padding: 10px;
+    cursor: pointer;
+    &--delete {
+      background-color: $red;
+      color: white;
+      font-weight: 600;
+    }
+    &--edit {
+      background-color: orange;
+      color: white;
+      font-weight: 600;
+    }
+  }
+  &__container {
+    padding: 1.5rem;
+    background-color: white;
+  }
+  th {
+    padding: .75rem;
+  }
+  td {
+    padding: 1rem 0.75rem;
+  }
+  th {
+    font-weight: 500;
+    border-top: 1px solid #dee2e6;
+  }
+  thead {
+    th {
+      border-bottom: 2px solid #dee2e6;
+      text-align: left;
+    }
+  }
+}

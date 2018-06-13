@@ -442,29 +442,113 @@ body {
   transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 /* line 66, ../../front/sass/components/_aside.scss */
+.aside__list__item--extanded {
+  flex-direction: column;
+  align-items: flex-start;
+}
+/* line 69, ../../front/sass/components/_aside.scss */
+.aside__list__item--extanded > div {
+  display: flex;
+  align-items: center;
+}
+/* line 73, ../../front/sass/components/_aside.scss */
+.aside__list__item--extanded ul {
+  padding-left: 34px;
+  margin-top: 10px;
+}
+/* line 76, ../../front/sass/components/_aside.scss */
+.aside__list__item--extanded ul li {
+  position: relative;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #757575;
+  line-height: 25px;
+}
+/* line 81, ../../front/sass/components/_aside.scss */
+.aside__list__item--extanded ul li:before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  width: 6px;
+  border-radius: 100%;
+  background-color: #757575;
+}
+/* line 95, ../../front/sass/components/_aside.scss */
 .aside__list__item:hover {
   color: #00b0ff;
 }
-/* line 69, ../../front/sass/components/_aside.scss */
+/* line 98, ../../front/sass/components/_aside.scss */
 .aside__list__item span {
   margin-left: 5px;
 }
-/* line 72, ../../front/sass/components/_aside.scss */
+/* line 101, ../../front/sass/components/_aside.scss */
 .aside__list__item i {
   font-size: 18px;
   font-size: 1.125rem;
 }
-/* line 74, ../../front/sass/components/_aside.scss */
+/* line 103, ../../front/sass/components/_aside.scss */
 .aside__list__item i:before {
   display: block;
 }
-/* line 78, ../../front/sass/components/_aside.scss */
+/* line 107, ../../front/sass/components/_aside.scss */
 .aside__list__item:first-child {
   margin: 0;
   padding: 20px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
-/* line 83, ../../front/sass/components/_aside.scss */
+/* line 112, ../../front/sass/components/_aside.scss */
 .aside__list__item--active {
   color: #00b0ff;
+}
+
+/* line 1, ../../front/sass/components/_table.scss */
+.table {
+  width: 100%;
+  background-color: white;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+/* line 6, ../../front/sass/components/_table.scss */
+.table__button {
+  padding: 10px;
+  cursor: pointer;
+}
+/* line 9, ../../front/sass/components/_table.scss */
+.table__button--delete {
+  background-color: #df1b1b;
+  color: white;
+  font-weight: 600;
+}
+/* line 14, ../../front/sass/components/_table.scss */
+.table__button--edit {
+  background-color: orange;
+  color: white;
+  font-weight: 600;
+}
+/* line 20, ../../front/sass/components/_table.scss */
+.table__container {
+  padding: 1.5rem;
+  background-color: white;
+}
+/* line 24, ../../front/sass/components/_table.scss */
+.table th {
+  padding: .75rem;
+}
+/* line 27, ../../front/sass/components/_table.scss */
+.table td {
+  padding: 1rem 0.75rem;
+}
+/* line 30, ../../front/sass/components/_table.scss */
+.table th {
+  font-weight: 500;
+  border-top: 1px solid #dee2e6;
+}
+/* line 35, ../../front/sass/components/_table.scss */
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+  text-align: left;
 }
