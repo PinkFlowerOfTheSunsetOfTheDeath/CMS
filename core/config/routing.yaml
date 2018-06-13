@@ -33,6 +33,6 @@ view_post:
   defaults: { _controller: 'App\Controllers\PostController::viewAction' }
 
 delete_post:
-  path: /posts/{id}
+  path: /posts/{id}/delete
   defaults: { _controller: 'App\Controllers\PostController::deleteAction' }
   methods: [POST]
