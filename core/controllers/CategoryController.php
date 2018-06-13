@@ -19,4 +19,9 @@ class CategoryController extends Controller
     {
         return $this->render('categories/form.html.twig');
     }
+
+    public function saveAction(): string
+    {
+
+    }
 }
