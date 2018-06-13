@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Controllers;
+use App\Helpers\Controller;
 
-
-class AuthController extends BaseController
+/**
+ * Class AuthController
+ * @package App\Controllers
+ */
+class AuthController extends Controller
 {
     /**
      * @return string
