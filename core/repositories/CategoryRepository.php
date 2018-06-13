@@ -125,6 +125,8 @@ class CategoryRepository extends Repository
         $stmt->execute();
 
         $this->errorManagement($stmt);
+
+        return true;
     }
     /**
      * Delete ONE category by its given id
