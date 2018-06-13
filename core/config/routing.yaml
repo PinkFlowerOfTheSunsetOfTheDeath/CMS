@@ -55,10 +55,14 @@ create_category:
   defaults: { _controller: 'App\Controllers\CategoryController::createAction' }
   methods: [GET]
 
-save_cateogry:
+save_category:
   path: /categories/create
   defaults: { _controller: 'App\Controllers\CategoryController::saveAction' }
   methods: [POST]
+
+edit_category:
+  path: /categories/{id}/edit
+  defaults: { _controller: 'App\Controllers\CategoryController::editAction' }
 
 #### ACCOUNT ROUTES ###
 
