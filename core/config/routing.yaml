@@ -50,6 +50,11 @@ update_post:
 
 #### CATEGORIES ROUTES ####
 
+list_categories:
+  path: /categories
+  defaults: { _controller: 'App\Controllers\CategoryController::listAction' }
+  methods: [GET]
+
 create_category:
   path: /categories/create
   defaults: { _controller: 'App\Controllers\CategoryController::createAction' }
