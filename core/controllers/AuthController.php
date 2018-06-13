@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Controllers;
-
-
+use App\Helpers\Controller;
 use App\Repositories\UserRepository;
 
-class AuthController extends BaseController
+/**
+ * Class AuthController
+ * @package App\Controllers
+ */
+class AuthController extends Controller
 {
     /**
      * @return string
@@ -34,6 +37,9 @@ class AuthController extends BaseController
         return $this->render('auth/login.html.twig');
     }
 
+    /**
+     *
+     */
     public function getAccount()
     {
         if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -57,11 +63,8 @@ class AuthController extends BaseController
 
             $_SESSION['user'] = $userName;
             header("Location: /posts");
-
-
         } else {
             header("Location: /login");
         }
     }
-
 }

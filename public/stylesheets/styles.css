@@ -109,24 +109,33 @@ body {
   justify-content: center;
 }
 /* line 5, ../../front/sass/pages/_connection.scss */
+.connection__error {
+  color: #df1b1b;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  min-height: 16px;
+  padding-top: 2px;
+}
+/* line 12, ../../front/sass/pages/_connection.scss */
 .connection__container {
   display: flex;
   flex-direction: column;
 }
-/* line 9, ../../front/sass/pages/_connection.scss */
+/* line 16, ../../front/sass/pages/_connection.scss */
 .connection__userImage {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
-/* line 14, ../../front/sass/pages/_connection.scss */
+/* line 21, ../../front/sass/pages/_connection.scss */
 .connection__card {
   padding: 24px;
   border-radius: 2px;
   background-color: white;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
-/* line 20, ../../front/sass/pages/_connection.scss */
+/* line 27, ../../front/sass/pages/_connection.scss */
 .connection__title {
   text-align: center;
   margin: 0 0 15px 0;
@@ -134,13 +143,14 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
 }
-/* line 26, ../../front/sass/pages/_connection.scss */
+/* line 33, ../../front/sass/pages/_connection.scss */
 .connection__field {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+  outline: none;
 }
-/* line 30, ../../front/sass/pages/_connection.scss */
+/* line 38, ../../front/sass/pages/_connection.scss */
 .connection__field label {
   font-size: 17px;
   font-size: 1.0625rem;
@@ -148,7 +158,7 @@ body {
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
 }
-/* line 36, ../../front/sass/pages/_connection.scss */
+/* line 44, ../../front/sass/pages/_connection.scss */
 .connection__field input {
   width: 270px;
   border-radius: 20px;
@@ -157,40 +167,44 @@ body {
   font-size: 0.875rem;
   padding: 12px 20px;
 }
-/* line 42, ../../front/sass/pages/_connection.scss */
+/* line 50, ../../front/sass/pages/_connection.scss */
 .connection__field input::placeholder {
   color: #999999;
 }
-/* line 46, ../../front/sass/pages/_connection.scss */
+/* line 54, ../../front/sass/pages/_connection.scss */
 .connection__field:last-child {
   margin-bottom: 0;
 }
-/* line 50, ../../front/sass/pages/_connection.scss */
+/* line 58, ../../front/sass/pages/_connection.scss */
 .connection__field--double input {
   margin-bottom: 10px;
 }
-/* line 55, ../../front/sass/pages/_connection.scss */
+/* line 63, ../../front/sass/pages/_connection.scss */
+.connection__field--active input {
+  border: 1px solid #df1b1b;
+}
+/* line 68, ../../front/sass/pages/_connection.scss */
 .connection__forgetPsw {
   margin-top: 2px;
 }
-/* line 57, ../../front/sass/pages/_connection.scss */
+/* line 70, ../../front/sass/pages/_connection.scss */
 .connection__forgetPsw a {
   text-decoration: none;
   color: #474bcb;
   font-size: 14px;
   font-size: 0.875rem;
 }
-/* line 63, ../../front/sass/pages/_connection.scss */
+/* line 76, ../../front/sass/pages/_connection.scss */
 .connection__linksContainer {
   text-align: center;
 }
-/* line 66, ../../front/sass/pages/_connection.scss */
+/* line 79, ../../front/sass/pages/_connection.scss */
 .connection__links {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
-/* line 70, ../../front/sass/pages/_connection.scss */
+/* line 83, ../../front/sass/pages/_connection.scss */
 .connection__links button {
   border-radius: 20px;
   background-color: #474bcb;
@@ -204,7 +218,7 @@ body {
   border: none;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
-/* line 82, ../../front/sass/pages/_connection.scss */
+/* line 95, ../../front/sass/pages/_connection.scss */
 .connection__links a {
   text-decoration: none;
   color: #474bcb;
@@ -215,11 +229,11 @@ body {
   font-size: 0.875rem;
   position: relative;
 }
-/* line 91, ../../front/sass/pages/_connection.scss */
+/* line 104, ../../front/sass/pages/_connection.scss */
 .connection__links a:hover:before {
   width: 100%;
 }
-/* line 95, ../../front/sass/pages/_connection.scss */
+/* line 108, ../../front/sass/pages/_connection.scss */
 .connection__links a:before {
   content: '';
   position: absolute;

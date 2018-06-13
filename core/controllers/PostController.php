@@ -4,13 +4,17 @@ namespace App\Controllers;
 use App\Entities\Post;
 use App\Helpers\ErrorManager;
 use App\Repositories\PostRepository;
+use App\Helpers\Controller;
 
 /**
  * Class PostController
  * @package App\Controllers
  */
-class  PostController extends BaseController
+class  PostController extends Controller
 {
+    const ERROR__POST_NOT_FOUND = 'Post does not exist with ID: ';
+    const ERROR__DATABASE = 'An Error occured while trying to reach Database';
+
     /**
      * Display the creation form for Post Entity, with errors if there are any
      * @return string - HTML Structure for Post creation page
@@ -83,8 +87,8 @@ class  PostController extends BaseController
         $post = $postRepository->getById($id);
 
         if (empty($post)) {
-            $error = "Post with id: $id does not exist";
-            header("Location: /posts?error=$error");
+            $error = self::ERROR__POST_NOT_FOUND . $id;
+            $this->redirectWithError('/posts', $error);
             exit;
         }
 
@@ -105,6 +109,69 @@ class  PostController extends BaseController
         }
         $postModel->deleteById($id);
         header("Location: /posts");
+    }
 
+    /**
+     * Edit a post (display edit form), redirect with error if post does not exist
+     * @param int $id - Id of the post to edit
+     * @return string - HTML Structure for page edit
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function editAction(int $id)
+    {
+        $postRepository = new PostRepository();
+        $post = $postRepository->getById($id);
+
+        if (empty($post)) {
+            $error = self::ERROR__POST_NOT_FOUND . $id;
+            $this->redirectWithError("/posts", $error);
+            exit;
+        }
+
+        // If form data found in session, use it to refill the update form
+        if (isset($_SESSION['form'])) {
+            $post = new Post($_SESSION['form']);
+        }
+
+        return $this->render('posts/form.html.twig', ['post' => $post]);
+    }
+
+    /**
+     * Update a given Post and redirect to post listing, display error if encountered any
+     * @param int $id - ID of the post to update
+     */
+    public function updateAction(int $id): void
+    {
+        // Find Post by Given ID
+        $postRepository = new PostRepository();
+        $post = $postRepository->getById($id);
+
+        // If Post not found, redirect with error
+        if (empty($post)) {
+            $error = self::ERROR__POST_NOT_FOUND . $id;
+            $this->redirectWithError('/posts', $error);
+            exit;
+        }
+
+        // Remove post id from POST object
+        unset($_POST['id']);
+        // Hydrate post entity with user data
+        $post->hydrate($_POST);
+
+        // Update post in Database
+        try {
+            $postRepository->update($post);
+        } catch (\PDOException $e) {
+            $error = self::ERROR__DATABASE;
+            // Save form data to Session to refill form
+            $_SESSION['form'] = $_POST;
+            // Redirect with error
+            $this->redirectWithError("/posts/$id/edit", $error);
+            exit;
+        }
+
+        $this->redirect('/posts');
     }
 }

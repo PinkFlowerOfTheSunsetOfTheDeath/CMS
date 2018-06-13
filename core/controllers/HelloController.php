@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Helpers;
 /**
  * Class HelloController
  */
-class HelloController extends BaseController {
+class HelloController extends Controller {
 
     /**
      * @return string

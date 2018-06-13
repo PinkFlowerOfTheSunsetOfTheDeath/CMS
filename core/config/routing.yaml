@@ -31,10 +31,21 @@ list_posts:
 view_post:
   path: /posts/{id}
   defaults: { _controller: 'App\Controllers\PostController::viewAction' }
+  methods: [GET]
 
 delete_post:
   path: /posts/{id}/delete
   defaults: { _controller: 'App\Controllers\PostController::deleteAction' }
+  methods: [GET]
+
+edit_post:
+  path: /posts/{id}/edit
+  defaults: { _controller: 'App\Controllers\PostController::editAction' }
+  methods: [GET]
+
+update_post:
+  path: /posts/{id}/edit
+  defaults: { _controller: 'App\Controllers\PostController::updateAction' }
   methods: [POST]
 
 #### ACCOUNT ROUTES ###
@@ -54,4 +65,4 @@ getUser:
 create_user:
   path: /register
   defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
-  methods:  [GET]
+  methods: [GET]

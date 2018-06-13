@@ -9,6 +9,7 @@ class PostRepository extends Repository
      * Create a Post inside database
      * @param Post $post - Post entity containing data to insert in database
      * @return Post - Post entity containing recently inserted data with row's ID
+     * @throws \PDOException - PDO Exception thrown if SQL statement encounters an error
      */
     public function create($post): Post
     {
@@ -34,7 +35,7 @@ class PostRepository extends Repository
 
         $stmt->execute();
 
-        // TODO: Check errors and throw
+        $this->errorManagement($stmt);
 
         $post->id = $db->lastInsertId();
         return $post;
@@ -90,7 +91,13 @@ class PostRepository extends Repository
         return $post;
     }
 
-    public function deleteById($id)
+    /**
+     * Delete a post by ID
+     * @param int $id - ID of the post to delete
+     * @return bool - True if post was deleted properly
+     * @throws \PDOException - exception raised if error encountered in SQL statement
+     */
+    public function deleteById(int $id)
     {
         $sql = "DELETE from `posts`
         WHERE `id` = :id
@@ -100,6 +107,38 @@ class PostRepository extends Repository
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
+        $this->errorManagement($stmt);
+        return true;
+    }
+
+    /**
+     * Update a given post entity in Database
+     * @param Post $post - Post to update with current values
+     * @return bool - True if post got updated properly, else false
+     */
+    public function update(Post $post): bool
+    {
+        $sql = '
+          UPDATE `posts` 
+          SET 
+            `title` = :title,
+            `content` = :content,
+            `visibility` = :visibility,
+            `slug` = :slug,
+            `updated_at` = NOW()
+          WHERE `id` = :id';
+        $stmt = $this->getDB()->prepare($sql);
+        // Bind values
+        $stmt->bindValue(':title', $post->title);
+        $stmt->bindValue(':content', $post->content);
+        $stmt->bindValue(':visibility', $post->visibility);
+        $stmt->bindValue(':slug', $post->slug);
+        $stmt->bindValue(':id', $post->id);
+        // Execute query
+        $stmt->execute();
+
+        // Manage errors
+        $this->errorManagement($stmt);
         return true;
     }
 }
