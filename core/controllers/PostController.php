@@ -67,6 +67,7 @@ class  PostController extends Controller
 
         // Retrieve errors from Query Parameters and pass it to view
         $error = isset($_GET['error']) ? $_GET['error'] : '';
+
         return $this->render('posts/list.html.twig', [
             'posts' => $posts,
             'error' => $error,
