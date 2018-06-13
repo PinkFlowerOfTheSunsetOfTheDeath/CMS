@@ -63,6 +63,12 @@ save_category:
 edit_category:
   path: /categories/{id}/edit
   defaults: { _controller: 'App\Controllers\CategoryController::editAction' }
+  methods: [GET]
+
+update_category:
+  path: /categories/{id}/edit
+  defaults: { _controller: 'App\Controllers\CategoryController::updateAction' }
+  methods: [POST]
 
 #### ACCOUNT ROUTES ###
 
