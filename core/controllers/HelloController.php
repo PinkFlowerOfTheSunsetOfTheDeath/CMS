@@ -13,6 +13,7 @@ class HelloController extends Controller {
      * @throws \Twig_Error_Syntax
      */
     public function helloAction() {
+
         return $this->render('hello.html.twig', ['name' => 'Masselot']);
     }
 

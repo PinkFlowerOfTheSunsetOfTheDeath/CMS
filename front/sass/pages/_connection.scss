@@ -1,3 +1,120 @@
-body {
-  background-color: red;
+.connection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__error {
+    color: $red;
+    @include font-size(14);
+    font-weight: 400;
+    min-height: 16px;
+    padding-top: 2px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__userImage {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  &__card {
+    padding: 24px;
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  }
+  &__title {
+    text-align: center;
+    margin: 0 0 15px 0;
+    @include font-size(24);
+    font-weight: 400;
+  }
+  &__field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    outline: none;
+    label {
+      @include font-size(17);
+      margin-bottom: 5px;
+      font-weight: 400;
+      font-family: 'Roboto', sans-serif;
+    }
+    input {
+      width: 270px;
+      border-radius: 20px;
+      border: 1px solid #474bcb;
+      @include font-size(14);
+      padding: 12px 20px;
+      &::placeholder {
+        color: #999999;
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &--double {
+      input {
+        margin-bottom: 10px;
+      }
+    }
+    &--active {
+      input {
+        border: 1px solid $red;
+      }
+    }
+  }
+  &__forgetPsw {
+    margin-top: 2px;
+    a {
+      text-decoration: none;
+      color: #474bcb;
+      @include font-size(14)
+    }
+  }
+  &__linksContainer {
+    text-align: center;
+  }
+  &__links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    button {
+      border-radius: 20px;
+      background-color: #474bcb;
+      color: white;
+      font-weight: 400;
+      text-align: center;
+      @include font-size(14);
+      padding: 9px 0;
+      width: 100%;
+      border: none;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    }
+    a {
+      text-decoration: none;
+      color: #474bcb;
+      margin-top: 15px;
+      text-align: center;
+      display: inline-block;
+      @include font-size(14);
+      position: relative;
+      &:hover {
+        &:before {
+          width: 100%;
+        }
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: #474bcb;
+        transition: 0.4s ease-in-out;
+      }
+    }
+  }
 }

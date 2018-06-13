@@ -1,0 +1,38 @@
+{% extends 'template/template.html.twig' %}
+
+{% block body %}
+    <div class="connection">
+        <div class="connection__container">
+            <div class="connection__userImage">
+                <img style="width: 88px; height: 88px; background-color: grey;" src="" alt="">
+            </div>
+            <div class="connection__card">
+                <div class="connection__title">
+                    <h3>Connexion</h3>
+                </div>
+                <div>
+                    <form action="">
+                        <div class="connection__field">
+                            <label for="">Mail address or username</label>
+                            <input class="connection__emailCheck" type="email" placeholder="mail@domaine.com">
+                            <span class="connection__error"></span>
+                        </div>
+                        <div class="connection__field">
+                            <label for="">Password</label>
+                            <input type="password" placeholder="Mot de passe">
+                        </div>
+                    </form>
+                    <div class="connection__forgetPsw">
+                        <a href="">Mot de passe oublié ?</a>
+                    </div>
+                </div>
+                <div class="connection__links">
+                    <button type="submit">Se connecter <i></i></button>
+                    <div class="connection__linksContainer">
+                        <a href="">Pas encore inscrit ?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

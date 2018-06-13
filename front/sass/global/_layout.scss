@@ -1,10 +1,22 @@
 .container {
-    width: 1240px;
-    margin: 0 auto;
-    &--mini {
-        width: 800px;
-    }
-    &--height {
-        min-height: 100vh;
-    }
+  width: 1240px;
+  margin: 0 auto;
+  &--mini {
+    width: 800px;
+  }
+  &--height {
+    min-height: 100vh;
+  }
+  &--centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
 }
