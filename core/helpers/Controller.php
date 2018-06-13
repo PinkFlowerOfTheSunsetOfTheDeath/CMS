@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Controllers;
-class BaseController {
+namespace App\Helpers;
+class Controller {
 
     /**
      * Initialize twig environment
@@ -37,5 +37,26 @@ class BaseController {
     public static function error(string $message) {
         $twig = self::initializeTwig();
         return $twig->render('error.html.twig', ['message' => $message]);
+    }
+
+    /**
+     * Redirect a user to a certain URL
+     * @param string $path - Path to
+     */
+    public function redirect(string $path)
+    {
+        header("Location: $path");
+        exit;
+    }
+
+    /**
+     * Redirect User to given url with error
+     * @param string $path - Path to redirect to
+     * @param string $error - Error message to display
+     */
+    public function redirectWithError(string $path, string $error): void
+    {
+        $redirectUrl = "$path?error=$error";
+        $this->redirect($redirectUrl);
     }
 }
