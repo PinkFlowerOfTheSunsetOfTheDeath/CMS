@@ -28,16 +28,17 @@ list_posts:
   defaults: { _controller: 'App\Controllers\PostController::listAction' }
   methods: [GET]
 
-#### ACCOUNT ROUTES ###
+view_post:
+  path: /posts/{id}
+  defaults: { _controller: 'App\Controllers\PostController::viewAction' }
+  methods: [GET]
 
-# CONNEXION #
-login:
-  path: /login
-  defaults: { _controller: 'App\Controllers\AuthController::loginAction'}
-  methods:  [GET]
+edit_post:
+  path: /posts/{id}/edit
+  defaults: { _controller: 'App\Controllers\PostController::editAction' }
+  methods: [GET]
 
-# INSCRIPTION #
-create_user:
-  path: /register
-  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
-  methods:  [GET]
+update_post:
+  path: /posts/{id}/edit
+  defaults: { _controller: 'App\Controllers\PostController::updateAction' }
+  methods: [POST]
