@@ -1,10 +1,25 @@
 <?php
 
 namespace App\Controllers;
-/**
- * Class HelloController
- */
-class HelloController extends BaseController {
+
+
+class AuthController extends BaseController
+{
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function registerAction()
+    {
+        return $this->render('auth/newAccount.html.twig');
+    }
+
+    public function saveAction()
+    {
+        // add new user
+    }
 
     /**
      * @return string
@@ -12,19 +27,9 @@ class HelloController extends BaseController {
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function helloAction() {
-
-        return $this->render('hello.html.twig', ['name' => 'Masselot']);
+    public function loginAction()
+    {
+        return $this->render('auth/login.html.twig');
     }
 
-    /**
-     * @param $name
-     * @return string
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function helloCustomAction($name) {
-        return $this->render('hello.html.twig', ['name' => $name]);
-    }
 }

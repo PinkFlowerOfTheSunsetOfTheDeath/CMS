@@ -36,3 +36,17 @@ delete_post:
   path: /posts/{id}/delete
   defaults: { _controller: 'App\Controllers\PostController::deleteAction' }
   methods: [POST]
+
+#### ACCOUNT ROUTES ###
+
+# CONNEXION #
+login:
+  path: /login
+  defaults: { _controller: 'App\Controllers\AuthController::loginAction'}
+  methods:  [GET]
+
+# INSCRIPTION #
+create_user:
+  path: /register
+  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
+  methods:  [GET]
