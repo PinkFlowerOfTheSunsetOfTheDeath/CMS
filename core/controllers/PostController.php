@@ -2,37 +2,51 @@
 
 namespace App\Controllers;
 use App\Entities\Post;
-use App\Helpers\Entity;
+use App\Helpers\ErrorManager;
 use App\Repositories\PostRepository;
-use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class PostController
+ * @package App\Controllers
+ */
 class  PostController extends BaseController
 {
     /**
-     * @return string
+     * Display the creation form for Post Entity, with errors if there are any
+     * @return string - HTML Structure for Post creation page
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function createAction()
+    public function createAction(): string
     {
-        return $this->render('posts/form.html.twig');
+        // Get Errors from Manager
+        $errors = ErrorManager::getError();
+        // Clear Errors from Session
+        ErrorManager::clearError();
+        return $this->render('posts/form.html.twig', ['errors' => $errors]);
     }
 
     /**
-     * @return string|array
+     * Save a Post in Database, and redirect user to created post details page, or redirect to creation form with errors
+     * if there are any
      */
-    public function saveAction()
+    public function saveAction(): void
     {
         $postRepository = new PostRepository();
         $post = new Post($_POST);
         $validateViolations = $post->validate();
 
-        if (count($validateViolations)!== 0) {
-            return $validateViolations;
-        } else {
-            $postRepository->create($post);
+        // If any validation rules failed, redirect user to post creation page
+        if (count($validateViolations) !== 0) {
+            ErrorManager::setError($validateViolations);
+            $_SESSION['form'] = $_POST;
+            header('Location: /posts/create');
+            exit;
         }
+        // Redirect to created post details page
+        $createdPost = $postRepository->create($post);
+        header("Location: /posts/$createdPost->id");
     }
 
     /**

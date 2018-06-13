@@ -2,6 +2,8 @@
 
 require '../vendor/autoload.php';
 
+session_start();
+
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;

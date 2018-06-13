@@ -2,6 +2,8 @@
 namespace App\Helpers;
 
 
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validation;
 
 class Entity
@@ -47,11 +49,22 @@ class Entity
         $violations = [];
         $validator = Validation::createValidator();
 
-        foreach ($rules as $rule => $ruleValidation) {
-            $violation = $validator->validate($this->{$rule}, $ruleValidation);
-            $violations = array_merge($violations, $violation);
+        foreach ($rules as $property => $ruleValidation) {
+            $violation = $validator->validate($this->{$property}, $ruleValidation);
+            $violations[$property] = $violation;
         }
 
-        return $violations;
+        $exportableViolations = [];
+        // Exports errors from Symfony Validation Error Objects
+        foreach ($violations as $property => $violationErrors) {
+            foreach ($violationErrors as $violationError) {
+                /**
+                 * @var $violationError ConstraintViolation
+                 */
+                $exportableViolations[] = "$property: {$violationError->getMessage()}";
+            }
+        }
+
+        return $exportableViolations;
     }
 }
