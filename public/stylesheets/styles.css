@@ -88,8 +88,8 @@ include in your content like this
   align-items: center;
 }
 /* line 15, ../../front/sass/global/_layout.scss */
-.container--colored {
-  background-color: rgba(0, 176, 255, 0.1);
+.container--header {
+  margin-top: 70px;
 }
 
 /* line 20, ../../front/sass/global/_layout.scss */
@@ -105,6 +105,13 @@ body {
 /* line 28, ../../front/sass/global/_layout.scss */
 * {
   font-family: 'Roboto', sans-serif;
+}
+
+/* line 32, ../../front/sass/global/_layout.scss */
+.link {
+  text-decoration: none;
+  color: black;
+  padding: 5px 2px;
 }
 
 /* line 1, ../../front/sass/pages/_connection.scss */
@@ -248,6 +255,62 @@ body {
   height: 1px;
   background-color: #474bcb;
   transition: 0.4s ease-in-out;
+}
+
+/* line 1, ../../front/sass/pages/_articleList.scss */
+.articleList {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -20px;
+}
+/* line 5, ../../front/sass/pages/_articleList.scss */
+.articleList__content {
+  width: 70%;
+  padding: 0 20px;
+}
+/* line 9, ../../front/sass/pages/_articleList.scss */
+.articleList__aside {
+  width: 30%;
+}
+/* line 11, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.13);
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+/* line 17, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__title {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 120%;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+/* line 23, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__tagsList {
+  display: flex;
+  margin: 0 -5px;
+}
+/* line 27, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__tags {
+  padding: 0 5px;
+}
+/* line 29, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__tags span {
+  background-color: #8bc34a;
+  padding: 5px 5px;
+  color: white;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 36, ../../front/sass/pages/_articleList.scss */
+.articleList__aside__undertitle {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 /* line 1, ../../front/sass/components/_header.scss */

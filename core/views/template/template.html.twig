@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <title>title</title>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body class="body--colored">
 
@@ -43,10 +45,12 @@
     <ul class="header__list">
         <div>
             <li class="header__list__item">
-                <img class="header__list__logo" src="/image/logo--mini.svg" alt="">
+                <a class="link" href="">
+                    <img class="header__list__logo" src="/image/logo--mini.svg" alt="">
+                </a>
             </li>
             <li class="header__list__item">
-                Nom du projet
+                <a class="link" href="">Nom du projet</a>
             </li>
         </div>
         <div>
@@ -62,7 +66,7 @@
     </ul>
 </header>
 
-<div id="content" class="container container--height">
+<div id="content" class="container container--height container--header">
     {% block body %}
     {% endblock body %}
 </div>

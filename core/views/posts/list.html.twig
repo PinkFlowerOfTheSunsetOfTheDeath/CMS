@@ -2,17 +2,58 @@
 
 
 {% block body %}
-    <h2>Add an article</h2>
-    <div style="display: flex; flex-direction: column">
-    <input type="text">
-    <textarea name="" id="" cols="30" rows="10" placeholder="wysiwyg"></textarea>
+    <div class="articleList">
+        <div class="articleList__content">
+            <h2>Add an article</h2>
+            <div>
+                <textarea placeholder="Enter your contents"></textarea>
+            </div>
+            <ul>
+                {% for post in posts %}
+                    <li>{{ post.title }}</li>
+                {% endfor %}
+                {% if error %}
+                    {{ error }}
+                {% endif %}
+            </ul>
+        </div>
+        <div class="articleList__aside">
+            <div class="articleList__aside__card">
+                <h3 class="articleList__aside__title">Choisissez la visibilité de votre article</h3>
+                <p>Etat actuel : <span>Visible</span></p>
+            </div>
+            <div class="articleList__aside__card">
+                <h3 class="articleList__aside__title">Tags</h3>
+                <div>
+                    <p class="articleList__aside__undertitle">Tags actifs</p>
+                    <ul class="articleList__aside__tagsList">
+                        <li class="articleList__aside__tags">
+                            <span>Aventure</span>
+                        </li>
+                        <li class="articleList__aside__tags">
+                            <span>Aventure</span>
+                        </li>
+                        <li class="articleList__aside__tags">
+                            <span>Aventure</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="articleList__aside__undertitle">Tags disponibles</p>
+                    <ul class="articleList__aside__tagsList">
+                        <li class="articleList__aside__tags">
+                            <span>Aventure</span>
+                        </li>
+                        <li class="articleList__aside__tags">
+                            <span>Aventure</span>
+                        </li>
+                        <li class="articleList__aside__tags">
+                            <span>Aventure</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <ul>
-        {% for post in posts %}
-            <li>{{ post.title }}</li>
-        {% endfor %}
-        {% if error %}
-            {{ error }}
-        {% endif %}
-    </ul>
 {% endblock %}
