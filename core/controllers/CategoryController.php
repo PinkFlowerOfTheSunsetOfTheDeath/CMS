@@ -12,6 +12,24 @@ use Twig\Error\Error;
  */
 class CategoryController extends Controller
 {
+
+    /**
+     * List all categories found
+     * @return string
+     */
+    public function listAction()
+    {
+        $categoryRepository = new CategoryRepository();
+        $categories = $categoryRepository->getAll();
+
+        $error = isset($_GET['error']) ? $_GET['error'] : '';
+
+        return $this->render('categories/categories.html.twig', [
+            'categories' => $categories
+        ]);
+
+    }
+
     /**
      * Create a Category via the category creation Form
      * @return string - HTML Layout for categories creation form
