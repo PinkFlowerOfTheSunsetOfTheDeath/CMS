@@ -63,6 +63,35 @@
       color: #757575;
       cursor: pointer;
       transition: 0.3s $easeInOutCubic;
+      &--extanded {
+        flex-direction: column;
+        align-items: flex-start;
+        & > div {
+          display: flex;
+          align-items: center;
+        }
+        ul {
+          padding-left: 34px;
+          margin-top: 10px;
+          li {
+            position: relative;
+            @include font-size(14);
+            color: $grey-light;
+            line-height: 25px;
+            &:before {
+              content: '';
+              position: absolute;
+              left: -12px;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 6px;
+              width: 6px;
+              border-radius: 100%;
+              background-color: $grey-light;
+            }
+          }
+        }
+      }
       &:hover {
         color: $blue-light;
       }
