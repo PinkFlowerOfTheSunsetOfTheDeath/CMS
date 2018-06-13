@@ -61,7 +61,7 @@ save_cateogry:
   methods: [POST]
 
 delete_cateogry:
-  path: /categories/delete
+  path: /categories/{id}/delete
   defaults: { _controller: 'App\Controllers\CategoryController::deleteAction' }
   methods: [POST]
 
