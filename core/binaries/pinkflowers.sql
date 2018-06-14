@@ -152,6 +152,9 @@ LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
+INSERT INTO `roles` (`label`) VALUES('admin');
+INSERT INTO `roles` (`label`) VALUES('member');
+
 --
 -- Table structure for table `users`
 --
