@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Entities\User;
 use App\Helpers\Controller;
 use App\Repositories\UserRepository;
 
@@ -39,6 +40,10 @@ class AuthController extends Controller
 
     /**
      *
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function getAccount()
     {
@@ -50,21 +55,51 @@ class AuthController extends Controller
             $user = $userRepository->getByUsername($userName);
 
             if (empty($user)) {
-                header("Location: /login");
-                exit;
+                $error = 'User does not exist';
+                return $this->render('auth/login.html.twig', [
+                    'credentials' => $_POST,
+                    'error' => $error
+                ]);
             }
 
+            // Check that passwords match
             $validPassword = $user->checkPassword($password);
-
             if (!$validPassword) {
-                header("Location: /login");
-                exit;
+                $error = 'Invalid password';
+                return $this->render('auth/login.html.twig', [
+                    'credentials' => $_POST,
+                    'error' => $error,
+                ]);
             }
 
-            $_SESSION['user'] = $userName;
-            header("Location: /posts");
+            // Check that user is Admin
+            if ($user->role !== User::ROLE_ADMIN) {
+                $error = 'Invalid Username and Password';
+                return $this->render('auth/login.html.twig', [
+                    'credentials' => $_POST,
+                    'error' => $error,
+                ]);
+            }
+
+            /**
+             * @var User $user
+             */
+            $_SESSION['user'] = [
+                'name' => $user->username,
+                'token' => $user->token,
+                'email' => $user->email
+            ];
+            $this->redirect('/posts');
         } else {
-            header("Location: /login");
+            // rerender
+            $error = "Missing password or username";
+            return $this->render('auth/login.html.twig', [
+                'credentials' => [
+                    'username' => $_POST['username'] ?? '',
+                    'password' => $_POST['password'] ?? '',
+                ],
+                'error' => $error,
+            ]);
         }
     }
 }
