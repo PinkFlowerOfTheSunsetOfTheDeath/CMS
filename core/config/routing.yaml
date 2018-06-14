@@ -30,6 +30,11 @@ post_page:
   defaults: { _controller: 'App\Controllers\FrontController::viewPostAction' }
   methods: [GET]
 
+pages:
+  path: /{slug}
+  defaults: { _controller: 'App\Controllers\FrontController::viewPageAction' }
+  methods: [GET]
+
 #### POSTS ROUTES ###
 
 # POSTS #
@@ -170,7 +175,7 @@ logout:
   methods:  [POST]
 
 # INSCRIPTION #
-create_user:
-  path: /register
-  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
-  methods: [GET]
+#create_user:
+#  path: /register
+#  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
+#  methods: [GET]
