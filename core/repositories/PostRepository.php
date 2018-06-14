@@ -163,4 +163,33 @@ class PostRepository extends Repository
         $this->errorManagement($stmt);
         return true;
     }
+
+    /**
+     * Update post visibility on website, set it visible if not, and not visible if visible
+     * @param $post
+     * @return bool
+     */
+    public function updateVisibility($post)
+    {
+        $currentVisibility = $post->visibility;
+
+        if ($currentVisibility == 1) {
+            $newVisibilityBehavior = 0;
+        } else {
+            $newVisibilityBehavior = 1;
+        }
+
+        $sql = 'UPDATE `posts`
+        SET `visibility` = :visibility
+        WHERE `id` = :id';
+
+        $stmt = $this->getDB()->prepare($sql);
+        $stmt->bindValue(':visibility', $newVisibilityBehavior);
+        $stmt->execute();
+
+        // Manage errors
+        $this->errorManagement($stmt);
+        return true;
+
+    }
 }
