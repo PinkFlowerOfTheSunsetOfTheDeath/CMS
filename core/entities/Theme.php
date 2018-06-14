@@ -10,4 +10,5 @@ class Theme extends Entity
 {
     public $image = '';
     public $name = '';
+    public $selected = false;
 }
