@@ -10,18 +10,6 @@
 
                 </p>
             </div>
-            <div class="articleList__cardItem">
-                <p class="articleList__cardItem__title">Number of visible post</p>
-                <p class="articleList__cardItem__value">
-                    {% set visibleArticle = 0 %}
-                    {% for post in posts %}
-                        {% if post.visible == 1 %}
-                        {% set visibleArticle = visibleArticle + 1 %}
-                            {{ visibleArticle }}
-                        {% endif %}
-                    {% endfor %}
-                </p>
-            </div>
         </div>
         <div class="articleList__content">
             <h2 class="article__title">List of articles</h2>
