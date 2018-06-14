@@ -172,7 +172,7 @@ getUser:
 logout:
   path: /admin/logout
   defaults: { _controller: 'App\Controllers\AuthController::logOut'}
-  methods:  [POST]
+  methods:  [GET]
 
 # INSCRIPTION #
 #create_user:

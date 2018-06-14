@@ -112,7 +112,7 @@ class AuthController extends Controller
      */
     public function logOut()
     {
-        unset($_SESSION);
+        unset($_SESSION['user']);
         $this->redirect('/admin/login');
     }
 }
