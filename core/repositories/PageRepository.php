@@ -98,4 +98,30 @@ class PageRepository extends Repository
 
         return true;
     }
+
+    public function create($page)
+    {
+        $sql = "INSERT INTO `pages`(
+        `title`
+        `slug`
+        `content`)
+        VALUES (
+        ':title',
+        ':slug',
+        ':content')";
+
+        $db = $this->getDB();
+        $stmt =  $db->prepare($sql);
+
+        $stmt->bindValue(':title', $page->title);
+        $stmt->bindValue(':title', $page->slug);
+        $stmt->bindValue(':title', $page->content);
+
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
+
+        $page->id = $db->lastInsertId();
+        return $page;
+    }
 }

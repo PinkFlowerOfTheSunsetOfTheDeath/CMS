@@ -94,6 +94,16 @@ list_pages:
   defaults: { _controller: 'App\Controllers\PageController::listAction' }
   methods: [GET]
 
+create_page:
+  path: /pages/create
+  defaults: { _controller: 'App\Controllers\PageController::createAction' }
+  methods: [GET]
+
+save_page:
+  path: /pages/create
+  defaults: { _controller: 'App\Controllers\PageController::saveAction' }
+  methods: [POST]
+
 view_page:
   path: /pages/{id}
   defaults: { _controller: 'App\Controllers\PageController::viewAction' }
@@ -103,7 +113,6 @@ delete_page:
   path: /pages/{id}/delete
   defaults: { _controller: 'App\Controllers\PageController::deleteAction' }
   methods: [GET]
-
 
 #### THEMES ROUTES ####
 
