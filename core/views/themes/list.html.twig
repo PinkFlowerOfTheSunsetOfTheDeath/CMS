@@ -11,24 +11,28 @@
             </div>
             <div class="themes__listItem">
                 {% for theme in themes %}
-                    <a class="link link__theme" href="">
-                        {% if theme.selected == true %}
-                        <div class="themes__item themes__item--active">
-                            {% else %}
-                            <div class="themes__item">
-                                {% endif %}
-                                <p class="themes__item__title">{{ theme.name }}</p>
-                                <img src="{{ theme.image }}" alt="">
-                                {% if theme.selected != true %}
-                                <div class="themes__buttonContainer">
-                                    <button id="validateTheme" class='rkmd-btn ripple-effect btn-lg'>
-                                        Activer ce thème
-                                    </button>
-                                </div>
+                    <div class="themes__card__wrapper">
+                        <a class="link link__theme themes__card__link" href=""></a>
+                        <div class="themes__card__imageWrapper">
+                            <div class="themes__card__padding"></div>
+                            <img class="themes__card__image" src="{{ theme.image }}" alt="">
+                        </div>
+                        <div class="themes__card__content">
+                            <div class="themes__card__row">
+                                <h3 class="themes__card__title">{{ theme.name }}</h3>
+                                <p class="themes__card__desc">Default template</p>
+                            </div>
+                            <div class="themes__card__row">
+                                {% if theme.selected == false %}
+                                    <div class="themes__buttonContainer">
+                                        <a style="background: #fff;" href="/admin/themes/{{ theme.name }}/select" id="validateTheme" class='rkmd-btn ripple-effect btn-lg'>
+                                            Activate this theme
+                                        </a>
+                                    </div>
                                 {% endif %}
                             </div>
                         </div>
-                    </a>
+                    </div>
                 {% endfor %}
             </div>
         </div>

@@ -6,14 +6,20 @@
         <div class="articleList__cardList">
             <div class="articleList__cardItem">
                 <p class="articleList__cardItem__title">Number of posts</p>
-                <p class="articleList__cardItem__value">
-                    10
+                <p id="numberPost" class="articleList__cardItem__value">
+
                 </p>
             </div>
             <div class="articleList__cardItem">
                 <p class="articleList__cardItem__title">Number of visible post</p>
                 <p class="articleList__cardItem__value">
-                    7
+                    {% set visibleArticle = 0 %}
+                    {% for post in posts %}
+                        {% if post.visible == 1 %}
+                        {% set visibleArticle = visibleArticle + 1 %}
+                            {{ visibleArticle }}
+                        {% endif %}
+                    {% endfor %}
                 </p>
             </div>
         </div>
