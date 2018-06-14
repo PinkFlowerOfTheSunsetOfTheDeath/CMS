@@ -1,0 +1,82 @@
+{% extends 'template/template.html.twig' %}
+
+
+{% block body %}
+    {% if action == 'edit' %}
+        <form class="pageAdd" method="post" action="/pages/{{ post.id }}/edit">
+    {% else %}
+        <form class="pageAdd" method="post" action="/pages/create">
+    {% endif %}
+        <div class="pageAdd__content">
+            <h2 class="pageAdd__title">
+                {% if post.edit %}
+                    Edit page
+                {% else %}
+                    Create a page
+                {% endif %}
+            </h2>
+            <div>
+                <div>
+                    <label class="page__label" for="title">Your title</label>
+                </div>
+                <input class="page__input" name="title" type="text" value="{{ post.title ?? '' }}">
+                <div>
+                    <label class="page__label" for="slug">Your slug</label>
+                </div>
+                <input class="page__input" name="slug" type="text" value="{{ post.slug ?? '' }}">
+            </div>
+            <div>
+                <textarea placeholder="Enter your contents">
+                    {{ post.content ?? '' }}
+                </textarea>
+            </div>
+            <div class="pageAdd__buttonAdd">
+                <button type="submit" class="rkmd-btn btn-green ripple-effect btn-lg">{{ action }}</button>
+            </div>
+        </div>
+        <div class="pageAdd__aside">
+            <div class="pageAdd__aside__card">
+                <h3 class="pageAdd__aside__title">Choose your page's visibility</h3>
+                <p>{% if post.visible %}Actual state :{% else %}Choose a state{% endif %}
+                    {% if post.visible %}
+                    {% if post.visible == 1 %}
+                        <span>Visible</span>
+                    {% else %}
+                        <span>Invisible</span>
+                    {% endif %}
+                    {% else %}
+                <div>
+                    <button class="pageAdd__button pageAdd__button--visibility"
+                            title="choose visibility of the page">Invisible
+                    </button>
+                    <input class="input--invisible" id="visibilitypage" type="number" value="{{ post.visible ?? 0 }}">
+                </div>
+                {% endif %}
+                </p>
+            </div>
+            <div class="pageAdd__aside__card">
+                <h3 class="pageAdd__aside__title">Tags</h3>
+                <div>
+                    <p class="pageAdd__aside__undertitle">Available tags</p>
+                    <ul id="insertTagsSelect" class="pageAdd__aside__tagsList">
+                        <li data-pos="0" class="pageAdd__aside__tags pageAdd__aside__tags--selectable">
+                            <span>Aventure</span>
+                        </li>
+                        <li data-pos="1" class="pageAdd__aside__tags pageAdd__aside__tags--selectable">
+                            <span>coin</span>
+                        </li>
+                        <li data-pos="2" class="pageAdd__aside__tags pageAdd__aside__tags--selectable">
+                            <span>flop</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="pageAdd__aside__undertitle">Actives tags</p>
+                    <ul id="insertTagsActif" class="pageAdd__aside__tagsList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/script/createPost.js"></script>
+{% endblock %}
