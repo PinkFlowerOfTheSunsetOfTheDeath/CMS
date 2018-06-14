@@ -36,6 +36,7 @@ class PageController extends Controller
     {
         $pageRepository = new PageRepository();
         $page = $pageRepository->getById($id);
+        
 
         if (empty($page)) {
             $error = self::ERROR__PAGE_NOT_FOUND . $id;
@@ -58,6 +59,7 @@ class PageController extends Controller
         $pageRepository = new PageRepository();
         $page = $pageRepository->getById($id);
 
+
         if (empty($page)) {
             $error = self::ERROR__PAGE_NOT_FOUND . $id;
             $this->redirectWithError('/pages', $error);
@@ -74,11 +76,7 @@ class PageController extends Controller
      */
     public function createAction()
     {
-        $errors = ErrorManager::getError();
-        // Clear Errors from Session
-
-        return $this->render("pages/form.html.twig", [
-            'errors' => $errors,
+        return $this->render("pages/formPages.html.twig", [
             'action' => 'form'
         ]);
     }

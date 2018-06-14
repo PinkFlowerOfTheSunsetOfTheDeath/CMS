@@ -39,7 +39,11 @@
                 </ul>
             </li>
             <li class="aside__list__item">
-                <img src="/image/page.svg" alt=""> <span>Pages</span>
+                <div>
+                    <a class="link" href="/pages">
+                        <img src="/image/page.svg" alt=""> <span>Pages</span>
+                    </a>
+                </div>
             </li>
             <li class="aside__list__item">
                 <img src="/image/user.svg" alt=""> <span>Users</span>
@@ -75,6 +79,9 @@
         </div>
     </ul>
 </header>
+
+<div id="modal" class="modal"></div>
+
 
 <div id="content" class="container container--height container--header">
     {% block body %}

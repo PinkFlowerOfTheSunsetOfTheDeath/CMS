@@ -13,6 +13,8 @@
 @import './pages/connection';
 @import './pages/articleAdd';
 @import './pages/articleList';
+@import './pages/pageAdd';
+@import './pages/pageList';
 
 // components
 
@@ -21,3 +23,5 @@
 @import './components/_aside';
 @import './components/table';
 @import './components/article';
+@import './components/page';
+@import './components/_modal';
