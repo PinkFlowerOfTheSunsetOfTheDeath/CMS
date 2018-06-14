@@ -190,6 +190,41 @@ class PostRepository extends Repository
         // Manage errors
         $this->errorManagement($stmt);
         return true;
+    }
 
+    /**
+     * Get Posts with specified conditions
+     * @param array $conditions - array of conditions - 'id' => 'in [1, 2, 3]'
+     * @throws \PDOException
+     * @return Post[] - Array of Post entities retrieved from Database
+     */
+    public function getWhere(array $conditions = [])
+    {
+        $sqlCond = [];
+        // :id = 1
+        foreach ($conditions as $property => $condition) {
+            $sqlCond[] = "`$property` $condition";
+        }
+
+        $sql = 'SELECT `id`, `title`, `slug`, `content`, `created_at`, `visibility` FROM `posts`';
+
+
+        if (count($conditions) > 0) {
+            $sql .= ' WHERE ' . implode(' AND ', $sqlCond);
+        }
+
+        $stmt = $this->getDB()->prepare($sql);
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
+
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $posts = [];
+
+        foreach ($rows as $row) {
+            $posts[] = new Post($row);
+        }
+
+        return $posts;
     }
 }
