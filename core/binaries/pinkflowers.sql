@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `pinkflowers`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `pinkflowers` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `pinkflowers`;
-
---
 -- Table structure for table `categories`
 --
 
