@@ -22,7 +22,7 @@ class ThemeManager
      * Get current active Theme
      * @return string - Current active theme
      */
-    public static function getTheme()
+    public static function getTheme(): string
     {
         return self::$theme;
     }

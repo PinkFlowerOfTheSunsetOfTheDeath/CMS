@@ -66,4 +66,25 @@ class ConfigManager
         // Configure Router
         Router::configureRouter($config);
     }
+
+    public function saveConfig(array $config)
+    {
+        // Create YAML from config array
+        $yamlConf = Yaml::dump($config);
+        // save config to file
+        file_put_contents(self::CONFIGURATION__FILE, $yamlConf);
+    }
+
+    /**
+     * Update Website's active theme
+     * @param string $theme - theme name to set in config
+     */
+    public function updateActiveTheme(string $theme)
+    {
+        $config = $this->loadConfiguration();
+
+        $config['website']['theme'] = $theme;
+
+        $this->saveConfig($config);
+    }
 }
