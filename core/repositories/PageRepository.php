@@ -120,26 +120,30 @@ class PageRepository extends Repository
     }
 
     /**
-     * @param $page
-     * @return array
+     * Create a Page in Database
+     * @param Page $page - Page to create
+     * @return Page - created create
      */
-    public function create($page)
+    public function create(Page $page)
     {
         $sql = "INSERT INTO `pages`(
-        `title`
-        `slug`
-        `content`)
+        `title`,
+        `slug`,
+        `content`,
+        `visibility`)
         VALUES (
-        ':title',
-        ':slug',
-        ':content')";
+        :title,
+        :slug,
+        :content,
+        :visibility)";
 
         $db = $this->getDB();
         $stmt =  $db->prepare($sql);
 
         $stmt->bindValue(':title', $page->title);
-        $stmt->bindValue(':title', $page->slug);
-        $stmt->bindValue(':title', $page->content);
+        $stmt->bindValue(':slug', $page->slug);
+        $stmt->bindValue(':content', $page->content);
+        $stmt->bindValue(':visibility', $page->visibility);
 
         $stmt->execute();
 

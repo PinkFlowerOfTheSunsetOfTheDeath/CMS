@@ -4,9 +4,9 @@
 
 {% block body %}
     {% if action == 'edit' %}
-        <form class="articleAdd" method="post" action="/posts/{{ post.id }}/edit">
+        <form class="articleAdd" method="post" action="/admin/posts/{{ post.id }}/edit">
     {% else %}
-        <form class="articleAdd" method="post" action="/posts/create">
+        <form class="articleAdd" method="post" action="/admin/posts/create">
     {% endif %}
         <div class="articleAdd__content">
             <h2 class="articleAdd__title">

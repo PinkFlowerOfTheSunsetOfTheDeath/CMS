@@ -53,8 +53,8 @@ class  PostController extends Controller
             ]);
         }
         // Redirect to created post details page
-        $createdPost = $postRepository->create($post);
-        header("Location: /posts/$createdPost->id");
+        $postRepository->create($post);
+        header("Location: /admin/posts");
     }
 
     /**
@@ -109,11 +109,11 @@ class  PostController extends Controller
         $postRepository = new PostRepository();
         $postToDelete = $postRepository->getById($id);
         if (empty($postToDelete)) {
-            header("Location: /posts");
+            header("Location: /admin/posts");
             exit;
         }
         $postRepository->deleteById($id);
-        header("Location: /posts");
+        header("Location: /admin/posts");
     }
 
     /**
@@ -180,7 +180,7 @@ class  PostController extends Controller
             exit;
         }
 
-        $this->redirect('/posts');
+        $this->redirect('/admin/posts');
     }
 
     /**
