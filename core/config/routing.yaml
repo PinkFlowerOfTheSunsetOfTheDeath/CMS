@@ -3,6 +3,11 @@ home_page:
   defaults: { _controller: 'App\Controllers\FrontController::homeAction' }
   methods: [GET]
 
+post_page:
+  path: /articles/{slug}
+  defaults: { _controller: 'App\Controllers\FrontController::viewPostAction' }
+  methods: [GET]
+
 #### POSTS ROUTES ###
 
 # POSTS #
