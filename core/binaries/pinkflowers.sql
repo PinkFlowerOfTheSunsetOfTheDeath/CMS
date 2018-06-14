@@ -164,6 +164,7 @@ CREATE TABLE `users` (
   `password` varchar(200) NOT NULL,
   `email` varchar(150) NOT NULL,
   `role_id` int(3) DEFAULT '1',
+  `token` varchar(255) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`),
