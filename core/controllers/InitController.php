@@ -49,6 +49,8 @@ class InitController extends Controller
         // test database connection
         Database::configureDB($configuration['database']);
 
+
+
         try {
             Database::getDB();
         } catch (\PDOException $exception) {
@@ -85,15 +87,7 @@ class InitController extends Controller
         // Check that website is not initialized
         $configManager = new ConfigManager();
 
-        $conf = $configManager->loadConfiguration();
-        if (
-            isset($conf['website'])
-            && isset($conf['website']['initialized'])
-            && $conf['website']['initialized']
-        ) {
-            $this->redirect('/');
-            exit;
-        }
+        $configManager->loadConfiguration();
 
         return $this->render('init/user.html.twig');
     }
