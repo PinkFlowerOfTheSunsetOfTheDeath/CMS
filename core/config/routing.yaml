@@ -121,11 +121,6 @@ save_page:
   defaults: { _controller: 'App\Controllers\PageController::saveAction' }
   methods: [POST]
 
-edit_page:
-  path: /admin/pages/edit
-  defaults: { _controller: 'App\Controllers\PageController::editAction' }
-  methods: [GET]
-
 list_pages:
   path: /admin/pages
   defaults: { _controller: 'App\Controllers\PageController::listAction' }
@@ -135,6 +130,16 @@ view_page:
   path: /admin/pages/{id}
   defaults: { _controller: 'App\Controllers\PageController::viewAction' }
   methods: [GET]
+
+edit_page:
+  path: /admin/pages/{id}/edit
+  defaults: { _controller: 'App\Controllers\PageController::editAction' }
+  methods: [GET]
+
+update_page:
+  path: /admin/pages/{id}/edit
+  defaults: { _controller : 'App\Controllers\PageController::updateAction' }
+  methods: [POST]
 
 delete_page:
   path: /admin/pages/{id}/delete
