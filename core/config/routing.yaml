@@ -1,14 +1,7 @@
-hello_custom:
-  path: /hello/{name}
-  defaults: { _controller: 'App\Controllers\HelloController::helloCustomAction' }
-
-hello:
-  path: /hello
-  defaults: { _controller: 'App\Controllers\HelloController::helloAction' }
-
-test:
-  path: /test
-  defaults: { _controller: 'App\Controllers\HelloController::helloAction'}
+home_page:
+  path: /
+  defaults: { _controller: 'App\Controllers\FrontController::homeAction' }
+  methods: [GET]
 
 #### POSTS ROUTES ###
 
