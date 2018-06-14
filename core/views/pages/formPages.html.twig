@@ -8,7 +8,7 @@
     {% endif %}
         <div class="pageAdd__content">
             <h2 class="pageAdd__title">
-                {% if page.edit %}
+                {% if action == 'edit' %}
                     Edit page
                 {% else %}
                     Create a page
@@ -36,21 +36,18 @@
         <div class="pageAdd__aside">
             <div class="pageAdd__aside__card">
                 <h3 class="pageAdd__aside__title">Choose your page's visibility</h3>
-                <p>{% if page.visible %}Actual state :{% else %}Choose a state{% endif %}
-                    {% if page.visible %}
-                    {% if page.visible == 1 %}
+                <p>{% if page.visibility %}Actual state :{% else %}Choose a state{% endif %}
+                    {% if page.visibility %}
                         <span>Visible</span>
                     {% else %}
                         <span>Invisible</span>
                     {% endif %}
-                    {% else %}
                 <div>
                     <button class="pageAdd__button pageAdd__button--visibility"
-                            title="choose visibility of the page">Invisible
+                            title="choose visibility of the page">{% if page.visibility %}Visible{% else %}Invisible{% endif %}
                     </button>
-                    <input class="input--invisible" id="visibilityPage" type="number" value="{{ page.visible ?? 0 }}">
+                    <input class="input--invisible" name="visibility" id="visibilityPage" type="number" value="{{ page.visible ?? 0 }}">
                 </div>
-                {% endif %}
                 </p>
             </div>
             <div class="pageAdd__aside__card">
