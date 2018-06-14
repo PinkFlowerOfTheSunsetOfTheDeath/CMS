@@ -78,7 +78,7 @@ update_category:
 delete_cateogry:
   path: /categories/{id}/delete
   defaults: { _controller: 'App\Controllers\CategoryController::deleteAction' }
-  methods: [POST]
+  methods: [GET]
 
 view_category:
   path: /categories/{id}
