@@ -20,17 +20,17 @@ class PageRepository extends Repository
      * List all pages present in DB
      * @param string $slug
      * @param int $id
+     * @param int $visibility
      * @return array
      */
-    public function getAll($slug = '', $id = 0)
+    public function getAll($slug = '', int $id = 0, int $visibility = null)
     {
         $sql = 'SELECT 
         `id`,
         `title`,
-        `content`,
         `slug`,
         `content`,
-        `visibility` 
+        `visibility`
         FROM `pages`';
 
         $sqlCond = [];
@@ -43,6 +43,10 @@ class PageRepository extends Repository
             $sqlCond[] = '`id` = :id';
         }
 
+        if (!is_null($visibility)) {
+            $sqlCond[] = '`visibility` = :visibility';
+        }
+
         if (count($sqlCond) > 0) {
             $sql.= ' WHERE ' . implode(' AND' , $sqlCond);
         }
@@ -50,11 +54,15 @@ class PageRepository extends Repository
         $stmt = $this->getDB()->prepare($sql);
 
         if (!empty($slug)) {
-            $stmt->bindValue('slug', $slug);
+            $stmt->bindValue(':slug', $slug);
         }
 
         if (!empty($id)) {
-            $stmt->bindValue('slug', $id);
+            $stmt->bindValue(':id', $id);
+        }
+
+        if (!is_null($visibility)) {
+            $stmt->bindValue(':visibility', $visibility);
         }
 
         $stmt->execute();
@@ -80,6 +88,18 @@ class PageRepository extends Repository
     }
 
     /**
+     * Query a slug in database by given slug
+     * @param string $slug - slug for page to query
+     * @param int $visibility - visibility for the page to query
+     * @return array|Page - Page if found, else empty array
+     */
+    public function getBySlug(string $slug, int $visibility)
+    {
+        $page = current($this->getAll($slug, 0, $visibility));
+        return $page;
+    }
+
+    /**
      * Delete page by given ID
      * @param $id
      * @return bool
@@ -97,5 +117,35 @@ class PageRepository extends Repository
         $this->errorManagement($stmt);
 
         return true;
+    }
+
+    /**
+     * @param $page
+     * @return array
+     */
+    public function create($page)
+    {
+        $sql = "INSERT INTO `pages`(
+        `title`
+        `slug`
+        `content`)
+        VALUES (
+        ':title',
+        ':slug',
+        ':content')";
+
+        $db = $this->getDB();
+        $stmt =  $db->prepare($sql);
+
+        $stmt->bindValue(':title', $page->title);
+        $stmt->bindValue(':title', $page->slug);
+        $stmt->bindValue(':title', $page->content);
+
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
+
+        $page->id = $db->lastInsertId();
+        return $page;
     }
 }

@@ -73,4 +73,11 @@ class Database
 
         return self::$db;
     }
+
+    public static function initDatabase(string $sql)
+    {
+        //
+        $stmt = self::getDB()->prepare($sql);
+        $stmt->execute();
+    }
 }

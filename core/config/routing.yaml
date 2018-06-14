@@ -1,3 +1,25 @@
+#### Configuration ####
+
+configure:
+  path: /configure
+  defaults: { _controller: 'App\Controllers\InitController::configureAction' }
+  methods: [GET]
+
+init:
+  path: /configure
+  defaults: { _controller: 'App\Controllers\InitController::initAction' }
+  methods: [POST]
+
+first_user:
+  path: /first-register
+  defaults: { _controller: 'App\Controllers\InitController::firstUserAction' }
+  methods: [GET]
+
+create_first_user:
+  path: /first-register
+  defaults: { _controller: 'App\Controllers\InitController::createFirstUserAction' }
+  methods: [POST]
+
 home_page:
   path: /
   defaults: { _controller: 'App\Controllers\FrontController::homeAction' }
@@ -8,117 +30,126 @@ post_page:
   defaults: { _controller: 'App\Controllers\FrontController::viewPostAction' }
   methods: [GET]
 
+pages:
+  path: /{slug}
+  defaults: { _controller: 'App\Controllers\FrontController::viewPageAction' }
+  methods: [GET]
+
 #### POSTS ROUTES ###
 
 # POSTS #
 create_post:
-  path: /posts/create
+  path: /admin/posts/create
   defaults: { _controller: 'App\Controllers\PostController::createAction'}
   methods:  [GET]
 
 save_post:
-  path: /posts/create
+  path: /admin/posts/create
   defaults: { _controller: 'App\Controllers\PostController::saveAction'}
   methods:  [POST]
 
 list_posts:
-  path: /posts
+  path: /admin/posts
   defaults: { _controller: 'App\Controllers\PostController::listAction' }
   methods: [GET]
 
 view_post:
-  path: /posts/{id}
+  path: /admin/posts/{id}
   defaults: { _controller: 'App\Controllers\PostController::viewAction' }
   methods: [GET]
 
 delete_post:
-  path: /posts/{id}/delete
+  path: /admin/posts/{id}/delete
   defaults: { _controller: 'App\Controllers\PostController::deleteAction' }
   methods: [GET]
 
 edit_post:
-  path: /posts/{id}/edit
+  path: /admin/posts/{id}/edit
   defaults: { _controller: 'App\Controllers\PostController::editAction' }
   methods: [GET]
 
 update_post:
-  path: /posts/{id}/edit
+  path: /admin/posts/{id}/edit
   defaults: { _controller: 'App\Controllers\PostController::updateAction' }
   methods: [POST]
 
 #### CATEGORIES ROUTES ####
 
 list_categories:
-  path: /categories
+  path: /admin/categories
   defaults: { _controller: 'App\Controllers\CategoryController::listAction' }
   methods: [GET]
 
 create_category:
-  path: /categories/create
+  path: /admin/categories/create
   defaults: { _controller: 'App\Controllers\CategoryController::createAction' }
   methods: [GET]
 
 save_category:
-  path: /categories/create
+  path: /admin/categories/create
   defaults: { _controller: 'App\Controllers\CategoryController::saveAction' }
   methods: [POST]
 
 edit_category:
-  path: /categories/{id}/edit
+  path: /admin/categories/{id}/edit
   defaults: { _controller: 'App\Controllers\CategoryController::editAction' }
   methods: [GET]
 
 update_category:
-  path: /categories/{id}/edit
+  path: /admin/categories/{id}/edit
   defaults: { _controller: 'App\Controllers\CategoryController::updateAction' }
   methods: [POST]
 
 delete_cateogry:
-  path: /categories/{id}/delete
+  path: /admin/categories/{id}/delete
   defaults: { _controller: 'App\Controllers\CategoryController::deleteAction' }
   methods: [GET]
 
 view_category:
-  path: /categories/{id}
+  path: /admin/categories/{id}
   defaults: { _controller: 'App\Controllers\CategoryController::viewAction' }
   methods: [GET]
 
 #### PAGES ROUTES ###
-
-list_pages:
-  path: /pages
-  defaults: { _controller: 'App\Controllers\PageController::listAction' }
-  methods: [GET]
-
-view_page:
-  path: /pages/{id}
-  defaults: { _controller: 'App\Controllers\PageController::viewAction' }
-  methods: [GET]
-
-delete_page:
-  path: /pages/{id}/delete
-  defaults: { _controller: 'App\Controllers\PageController::deleteAction' }
-  methods: [GET]
-
 create_page:
-  path: /pages/create
+  path: /admin/pages/create
   defaults: { _controller: 'App\Controllers\PageController::createAction' }
   methods: [GET]
 
 save_page:
-  path: /pages/create
+  path: /admin/pages/create
   defaults: { _controller: 'App\Controllers\PageController::saveAction' }
   methods: [POST]
+
+edit_page:
+  path: /admin/pages/edit
+  defaults: { _controller: 'App\Controllers\PageController::editAction' }
+  methods: [GET]
+
+list_pages:
+  path: /admin/pages
+  defaults: { _controller: 'App\Controllers\PageController::listAction' }
+  methods: [GET]
+
+view_page:
+  path: /admin/pages/{id}
+  defaults: { _controller: 'App\Controllers\PageController::viewAction' }
+  methods: [GET]
+
+delete_page:
+  path: /admin/pages/{id}/delete
+  defaults: { _controller: 'App\Controllers\PageController::deleteAction' }
+  methods: [GET]
 
 #### THEMES ROUTES ####
 
 list_themes:
-  path: /themes
+  path: /admin/themes
   defaults: { _controller: 'App\Controllers\ThemeController::listAction' }
   methods: [GET]
 
 select_theme:
-  path: /themes/{name}/select
+  path: /admin/themes/{name}/select
   defaults: { _controller: 'App\Controllers\ThemeController::selectAction' }
   methods: [GET]
 
@@ -127,17 +158,24 @@ select_theme:
 
 # CONNEXION #
 login:
-  path: /login
+  path: /admin/login
   defaults: { _controller: 'App\Controllers\AuthController::loginAction'}
   methods:  [GET]
 
 getUser:
-  path: /login
+  path: /admin/login
   defaults: { _controller: 'App\Controllers\AuthController::getAccount'}
   methods:  [POST]
 
+# DECONNEXION #
+
+logout:
+  path: /admin/logout
+  defaults: { _controller: 'App\Controllers\AuthController::logOut'}
+  methods:  [POST]
+
 # INSCRIPTION #
-create_user:
-  path: /register
-  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
-  methods: [GET]
+#create_user:
+#  path: /register
+#  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
+#  methods: [GET]

@@ -14,12 +14,15 @@
 @import './pages/articleAdd';
 @import './pages/articleList';
 @import "./pages/themes";
+@import './pages/pageAdd';
+@import './pages/pageList';
 
 // components
 
 @import './components/_footer';
 @import './components/_header';
 @import './components/_aside';
-@import './components/_table';
-@import './components/_article';
+@import './components/table';
+@import './components/article';
+@import './components/page';
 @import './components/_modal';

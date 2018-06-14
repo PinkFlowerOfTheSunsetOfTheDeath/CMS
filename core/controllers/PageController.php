@@ -2,8 +2,8 @@
 namespace App\Controllers;
 
 
+use App\Entities\Page;
 use App\Helpers\Controller;
-use App\Helpers\ErrorManager;
 use App\Repositories\PageRepository;
 
 class PageController extends Controller
@@ -12,6 +12,9 @@ class PageController extends Controller
 
     /**
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function listAction()
     {
@@ -30,11 +33,15 @@ class PageController extends Controller
      * Get page view at given id
      * @param $id
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function viewAction($id)
     {
         $pageRepository = new PageRepository();
         $page = $pageRepository->getById($id);
+        
 
         if (empty($page)) {
             $error = self::ERROR__PAGE_NOT_FOUND . $id;
@@ -57,6 +64,7 @@ class PageController extends Controller
         $pageRepository = new PageRepository();
         $page = $pageRepository->getById($id);
 
+
         if (empty($page)) {
             $error = self::ERROR__PAGE_NOT_FOUND . $id;
             $this->redirectWithError('/pages', $error);
@@ -70,15 +78,52 @@ class PageController extends Controller
     /**
      * Render create page form
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function createAction()
     {
-        $errors = ErrorManager::getError();
-        // Clear Errors from Session
-
-        return $this->render("pages/form.html.twig", [
-            'errors' => $errors,
+        return $this->render("pages/formPages.html.twig", [
             'action' => 'form'
         ]);
+    }
+
+    /**
+     * Add new page in DB
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function saveAction()
+    {
+        $pageRepository = new PageRepository();
+        $page = new Page($_POST);
+
+        $violations = $page->validate();
+
+        if (count($violations) !== 0) {
+            return $this->render('pages/form.html.twig', [
+                'page' => $page,
+                'errors' => $violations,
+                'action' => 'create'
+            ]);
+        }
+
+        try {
+            // Redirect to the list of pages
+            $pageRepository->create($page);
+            header("Location: /pages");
+            exit;
+        } catch (\PDOException $e) {
+            // Redirect to create page form with posted data
+            return $this->render('pages/form.html.twig', [
+                'pageData' => $page,
+                'errors' => ['An error occurred while creating the category in the Database'],
+                'action' => 'create'
+            ]);
+        }
+
     }
 }

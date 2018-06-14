@@ -1,6 +1,8 @@
 <?php
 namespace App\Boot;
 
+use App\Repositories\UserRepository;
+
 /**
  * Class Kernel - Boot the application
  * @package App\Boot
@@ -40,10 +42,47 @@ class Kernel
     {
         // Boot Application Configuration - Database and Theme
         $config = $this->bootConfiguration();
-        $this->configManager->configureWebsite($config);
+        // Init application
+        $this->initializeApplicaton($config);
         // Boot Routing configuration
         $routes = $this->bootRouting();
         $this->configManager->configureRouter($routes);
+    }
+
+    /**
+     * Init Application configuration and Database + first user on first login
+     * @param array $config
+     */
+    public function initializeApplicaton(array $config)
+    {
+
+        // If website is not initialized
+        $path = $_SERVER['PATH_INFO'] ?? '/';
+        if (
+            $path !== '/configure'
+            && (!isset($config['website']['initialized'])
+                || !$config['website']['initialized'])
+        ) {
+            // Init controller
+            header('Location: /configure');
+            exit;
+        }
+
+        // Configure Website
+        $this->configManager->configureWebsite($config);
+
+        $userRepository = new UserRepository();
+        $adminExists = $userRepository->adminExists();
+        // If website is initialized but Admin User not created
+        if (
+            $path !== '/configure'
+            && $path !== '/first-register'
+            && !$adminExists
+        ) {
+            // Init controller
+            header('Location: /first-register');
+            exit;
+        }
     }
 
     /**
@@ -54,8 +93,8 @@ class Kernel
      */
     public function run()
     {
-        // TODO: Load Middlewares here
-        Router::route();
+        $middlewares = $this->loadMiddlewares();
+        Router::route($middlewares);
     }
 
     /**
@@ -73,6 +112,8 @@ class Kernel
      */
     public function loadMiddlewares()
     {
-        return [];
+        return [
+            'AuthMiddleware::middlewareCheck' => 'isAuthenticated'
+        ];
     }
 }
