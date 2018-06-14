@@ -140,6 +140,13 @@ getUser:
   defaults: { _controller: 'App\Controllers\AuthController::getAccount'}
   methods:  [POST]
 
+# DECONNEXION #
+
+logout:
+  path: /admin/logout
+  defaults: { _controller: 'App\Controllers\AuthController::logOut'}
+  methods:  [POST]
+
 # INSCRIPTION #
 create_user:
   path: /register
