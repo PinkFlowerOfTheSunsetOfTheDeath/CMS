@@ -1053,6 +1053,151 @@ footer .footer-content span {
   color: #00b0ff;
 }
 
+/* line 1, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+/* line 5, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__title {
+  font-weight: 600;
+  font-size: 50px;
+  font-size: 3.125rem;
+  margin-bottom: 60px;
+}
+/* line 10, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__button {
+  border: 1px solid #f8f9fa;
+  padding: 7px;
+  color: #212529;
+  background-color: #f8f9fa;
+  transition: 0.3s;
+  cursor: pointer;
+}
+/* line 17, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__button:hover {
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+/* line 21, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__button--active {
+  background-color: #8bc34a;
+  color: white;
+}
+/* line 24, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__button--active:hover {
+  background-color: #A7EB59;
+}
+/* line 29, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__buttonAdd {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+/* line 34, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__content {
+  width: 70%;
+  padding: 0 50px 0 0;
+}
+/* line 38, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside {
+  width: 30%;
+}
+/* line 40, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.13);
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+/* line 45, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__card p {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+/* line 52, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__title {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 120%;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+/* line 58, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__tagsList {
+  display: flex;
+  margin: 0 -5px;
+}
+/* line 62, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__tags {
+  padding: 0 5px;
+}
+/* line 64, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__tags--inactive {
+  display: none;
+}
+/* line 67, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__tags span {
+  background-color: #8bc34a;
+  padding: 5px 5px;
+  color: white;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+/* line 74, ../../front/sass/pages/_pageAdd.scss */
+.pageAdd__aside__undertitle {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+
+/* line 2, ../../front/sass/pages/_pageList.scss */
+.pageList__cardList {
+  display: flex;
+}
+/* line 5, ../../front/sass/pages/_pageList.scss */
+.pageList__cardItem {
+  margin-left: 20px;
+  width: calc(33.3333% - 20px);
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.11), 0 3px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* line 6, ../../front/sass/pages/_pageList.scss */
+.pageList__cardItem:first-child {
+  margin-left: 0;
+}
+/* line 16, ../../front/sass/pages/_pageList.scss */
+.pageList__cardItem__title {
+  padding-left: 20px;
+  height: 50px;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 20px;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+/* line 25, ../../front/sass/pages/_pageList.scss */
+.pageList__cardItem__value {
+  margin-bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: 700;
+  font-size: 30px;
+  font-size: 1.875rem;
+  color: #00b0ff;
+}
+
 /* line 1, ../../front/sass/components/_header.scss */
 .header {
   position: fixed;
@@ -1326,6 +1471,33 @@ footer .footer-content span {
 }
 /* line 17, ../../front/sass/components/_article.scss */
 .article__title {
+  font-weight: 600;
+  font-size: 50px;
+  font-size: 3.125rem;
+  margin: 100px 0 30px 0;
+}
+
+/* line 2, ../../front/sass/components/_page.scss */
+.page__input {
+  background: white;
+  border: none;
+  padding: 5px 5px 5px 0;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 25px;
+  width: 100%;
+  display: inline-block;
+}
+/* line 12, ../../front/sass/components/_page.scss */
+.page__label {
+  font-size: 20px;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+/* line 17, ../../front/sass/components/_page.scss */
+.page__title {
   font-weight: 600;
   font-size: 50px;
   font-size: 3.125rem;
