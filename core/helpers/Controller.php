@@ -32,14 +32,21 @@ class Controller {
     /**
      * Render Front office views from active theme
      * @param string $fileName - Name of the file to load
+     * @param array $data
      */
-    public function renderFront(string $fileName)
+    public function renderFront(string $fileName, array $data = [])
     {
         // TODO: Check that theme/file/dir exists
         $viewDir = ThemeManager::getTheme();
-        $file = __DIR__ . "/../../content/themes/$viewDir/$fileName";
+        $file = __DIR__ . "/../../public/content/themes/$viewDir/$fileName";
 
+        if (!file_exists($file)) {
+            // le chemin de la vue ne correspond pas à un fichier existant
+            throw new \InvalidArgumentException('Fichier de vue '.$fileName.' non trouvé');
+        }
+        ob_start();
         require $file;
+        echo ob_get_clean();
         exit;
     }
 
