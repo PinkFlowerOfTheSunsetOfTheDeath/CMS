@@ -19,6 +19,8 @@ class PageController extends Controller
 
         $error = isset($_GET['error']) ? $_GET['error'] : '';
 
+        dump($pages);
+        die();
         return $this->render("pages/listPages.html.twig", [
             'pages' => $pages,
             'error' => $error
