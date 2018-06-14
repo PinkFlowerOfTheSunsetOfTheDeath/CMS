@@ -99,6 +99,10 @@ class PageRepository extends Repository
         return true;
     }
 
+    /**
+     * @param $page
+     * @return array
+     */
     public function create($page)
     {
         $sql = "INSERT INTO `pages`(

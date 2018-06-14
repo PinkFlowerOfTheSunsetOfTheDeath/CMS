@@ -94,6 +94,11 @@ save_page:
   defaults: { _controller: 'App\Controllers\PageController::saveAction' }
   methods: [POST]
 
+edit_page:
+  path: /admin/pages/edit
+  defaults: { _controller: 'App\Controllers\PageController::editAction' }
+  methods: [GET]
+
 list_pages:
   path: /admin/pages
   defaults: { _controller: 'App\Controllers\PageController::listAction' }

@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Entities\Page;
 use App\Helpers\Controller;
-use App\Helpers\ErrorManager;
 use App\Repositories\PageRepository;
 
 class PageController extends Controller
@@ -13,6 +12,9 @@ class PageController extends Controller
 
     /**
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function listAction()
     {
@@ -31,6 +33,9 @@ class PageController extends Controller
      * Get page view at given id
      * @param $id
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function viewAction($id)
     {
@@ -73,6 +78,9 @@ class PageController extends Controller
     /**
      * Render create page form
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function createAction()
     {
@@ -81,6 +89,13 @@ class PageController extends Controller
         ]);
     }
 
+    /**
+     * Add new page in DB
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function saveAction()
     {
         $pageRepository = new PageRepository();
