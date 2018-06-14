@@ -16,7 +16,9 @@
         "App\\Controllers\\": "core/controllers/",
         "App\\Helpers\\": "core/helpers/",
         "App\\Entities\\": "core/entities",
-        "App\\Repositories\\": "core/repositories/"
+        "App\\Repositories\\": "core/repositories/",
+        "App\\Boot\\": "core/boot/",
+        "App\\Middlewares\\": "core/middlewares"
       }
     }
 }
