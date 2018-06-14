@@ -62,4 +62,23 @@ class User extends Entity
 
         return $hashedPassword == $this->password;
     }
+
+    /**
+     * Return whether user is admin
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    /**
+     * Check if given token matches User's token
+     * @param string $token
+     * @return bool
+     */
+    public function isTokenValid(string $token)
+    {
+        return $this->token === $token;
+    }
 }
