@@ -11,7 +11,7 @@
             </div>
             <div class="themes__listItem">
                 {% for theme in themes %}
-                    <div class="themes__card__wrapper">
+                    <div class="themes__card__wrapper" style="margin-right: 30px;">
                         <a class="link link__theme themes__card__link" href=""></a>
                         <div class="themes__card__imageWrapper">
                             <div class="themes__card__padding"></div>
@@ -20,7 +20,7 @@
                         <div class="themes__card__content">
                             <div class="themes__card__row">
                                 <h3 class="themes__card__title">{{ theme.name }}</h3>
-                                <p class="themes__card__desc">Default template</p>
+                                <p class="themes__card__desc">Custom Theme</p>
                             </div>
                             <div class="themes__card__row">
                                 {% if theme.selected == false %}
