@@ -21,7 +21,8 @@
         "App\\Middlewares\\": "core/middlewares"
       },
       "files": [
-        "core/functions/posts.php"
+        "core/functions/posts.php",
+        "core/functions/pages.php"
       ]
     }
 }
