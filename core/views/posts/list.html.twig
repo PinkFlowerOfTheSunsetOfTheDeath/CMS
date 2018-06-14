@@ -40,10 +40,10 @@
                             <td><a class="link" href="/admin/posts/{{ post.id }}/edit">{{ post.updated_at }}</a></td>
                             <td class="table__title"><a class="link" href="/admin/posts/{{ post.id }}/edit">{{ post.title }}</a></td>
                             <td><a class="link" href="/admin/posts/{{ post.id }}/edit">{{ post.slug }}</a></td>
-                            {% if post.visible == 1 %}
-                                <td><a class="link" href="/admin/posts/{{ post.id }}/">Visible</a></td>
+                            {% if post.visibility == 1 %}
+                                <td><a class="link" href="/admin/posts/{{ post.id }}/edit">Visible</a></td>
                             {% else %}
-                                <td><a class="link" href="/admin/posts/{{ post.id }}/">Invisible</a></td>
+                                <td><a class="link" href="/admin/posts/{{ post.id }}/edit">Invisible</a></td>
                             {% endif %}
                             <td class="table__buttonContainer">
                                 <a href="/admin/posts/{{ post.id }}/edit" class="link table__button table__button--edit">Editer</a>
