@@ -1053,6 +1053,61 @@ footer .footer-content span {
   color: #00b0ff;
 }
 
+/* line 1, ../../front/sass/pages/_themes.scss */
+.themes {
+  display: flex;
+  flex-direction: column;
+}
+/* line 4, ../../front/sass/pages/_themes.scss */
+.themes__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+/* line 9, ../../front/sass/pages/_themes.scss */
+.themes__listItem {
+  display: flex;
+}
+/* line 12, ../../front/sass/pages/_themes.scss */
+.themes__item {
+  padding: 15px;
+  background-color: white;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+/* line 17, ../../front/sass/pages/_themes.scss */
+.themes__item--active {
+  background-color: white;
+}
+/* line 21, ../../front/sass/pages/_themes.scss */
+.themes__item--active .themes__buttonContainer button {
+  color: white;
+  background-color: #8bc34a !important;
+}
+/* line 28, ../../front/sass/pages/_themes.scss */
+.themes__buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+/* line 32, ../../front/sass/pages/_themes.scss */
+.themes__buttonContainer button {
+  width: 100%;
+  margin-right: 20px;
+  background: white !important;
+}
+/* line 36, ../../front/sass/pages/_themes.scss */
+.themes__buttonContainer button:last-child {
+  margin-right: 0;
+}
+/* line 41, ../../front/sass/pages/_themes.scss */
+.themes__head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 /* line 1, ../../front/sass/components/_header.scss */
 .header {
   position: fixed;
@@ -1075,25 +1130,37 @@ footer .footer-content span {
   padding: 0 20px;
 }
 /* line 18, ../../front/sass/components/_header.scss */
+.header__list__logout {
+  width: 30px;
+}
+/* line 21, ../../front/sass/components/_header.scss */
 .header__list > div {
   display: flex;
   align-items: center;
 }
-/* line 22, ../../front/sass/components/_header.scss */
+/* line 25, ../../front/sass/components/_header.scss */
 .header__list__logo {
   display: inline-block;
   height: 30px;
 }
-/* line 27, ../../front/sass/components/_header.scss */
-.header__list__item:first-child {
+/* line 29, ../../front/sass/components/_header.scss */
+.header__list__item {
   margin-right: 10px;
 }
-/* line 30, ../../front/sass/components/_header.scss */
+/* line 31, ../../front/sass/components/_header.scss */
+.header__list__item:first-child {
+  margin-right: 20px;
+}
+/* line 34, ../../front/sass/components/_header.scss */
+.header__list__item:last-child {
+  margin-right: 10px;
+}
+/* line 37, ../../front/sass/components/_header.scss */
 .header__list__item--centered {
   display: flex;
   align-items: center;
 }
-/* line 35, ../../front/sass/components/_header.scss */
+/* line 42, ../../front/sass/components/_header.scss */
 .header__list__userImg {
   background-color: grey;
   border-radius: 100%;
