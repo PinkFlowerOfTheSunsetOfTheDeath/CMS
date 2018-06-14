@@ -44,9 +44,10 @@ class PostRepository extends Repository
     /**
      * @param string $slug
      * @param int $id
+     * @param null $visible
      * @return array
      */
-    public function getAll($slug = '', $id = 0)
+    public function getAll($slug = '', $id = 0, $visible = null)
     {
         $sql = 'SELECT `id`, `title`, `content`, `created_at`, `updated_at`, `visibility`, `slug` FROM `posts`';
 
@@ -56,6 +57,10 @@ class PostRepository extends Repository
         }
         if (!empty($id)) {
             $sqlCond[] = '`id` = :id';
+        }
+
+        if (!is_null($visible)) {
+            $sqlCond[] = '`visibility` = :visibility';
         }
 
         if (count($sqlCond) > 0) {
@@ -69,6 +74,11 @@ class PostRepository extends Repository
         if (!empty($id)) {
             $stmt->bindValue(':id', $id);
         }
+
+        if (!is_null($visible)) {
+            $stmt->bindValue(':visibility', $visible);
+        }
+
         $stmt->execute();
 
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -78,6 +88,18 @@ class PostRepository extends Repository
             $posts[] = new Post($row);
         }
         return $posts;
+    }
+
+    /**
+     * Find a Post by slug
+     * @param string $slug - slug of the article to find
+     * @param visible - Visibility of the post to retrieve, if null, retrieve both
+     * @return array|Post - Post if found, else empty array
+     */
+    public function getBySlug(string $slug, $visible = null)
+    {
+        $post = current($this->getAll($slug, 0, $visible));
+        return $post;
     }
 
     /**

@@ -40,6 +40,7 @@ class Controller {
         $file = __DIR__ . "/../../content/themes/$viewDir/$fileName";
 
         require $file;
+        exit;
     }
 
     /**
