@@ -19,6 +19,9 @@
         "App\\Repositories\\": "core/repositories/",
         "App\\Boot\\": "core/boot/",
         "App\\Middlewares\\": "core/middlewares"
-      }
+      },
+      "files": [
+        "core/functions/posts.php"
+      ]
     }
 }
