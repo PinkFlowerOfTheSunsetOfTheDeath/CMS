@@ -1,0 +1,13 @@
+{% extends 'template/template.html.twig' %}
+
+
+{% block body %}
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.label }}</li>
+        {% endfor %}
+        {% if error %}
+            {{ error }}
+        {% endif %}
+    </ul>
+{% endblock %}
