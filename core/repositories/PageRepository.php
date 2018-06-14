@@ -29,7 +29,6 @@ class PageRepository extends Repository
         `title`,
         `content`,
         `slug`,
-        `content`,
         `visibility` 
         FROM `pages`';
 
@@ -50,11 +49,11 @@ class PageRepository extends Repository
         $stmt = $this->getDB()->prepare($sql);
 
         if (!empty($slug)) {
-            $stmt->bindValue('slug', $slug);
+            $stmt->bindValue(':slug', $slug);
         }
 
         if (!empty($id)) {
-            $stmt->bindValue('slug', $id);
+            $stmt->bindValue(':id', $id);
         }
 
         $stmt->execute();
@@ -99,23 +98,31 @@ class PageRepository extends Repository
         return true;
     }
 
-    public function create($page)
+    /**
+     * Create a Page in Database
+     * @param Page $page - Page to create
+     * @return Page - created create
+     */
+    public function create(Page $page)
     {
         $sql = "INSERT INTO `pages`(
-        `title`
-        `slug`
-        `content`)
+        `title`,
+        `slug`,
+        `content`,
+        `visibility`)
         VALUES (
-        ':title',
-        ':slug',
-        ':content')";
+        :title,
+        :slug,
+        :content,
+        :visibility)";
 
         $db = $this->getDB();
         $stmt =  $db->prepare($sql);
 
         $stmt->bindValue(':title', $page->title);
-        $stmt->bindValue(':title', $page->slug);
-        $stmt->bindValue(':title', $page->content);
+        $stmt->bindValue(':slug', $page->slug);
+        $stmt->bindValue(':content', $page->content);
+        $stmt->bindValue(':visibility', $page->visibility);
 
         $stmt->execute();
 

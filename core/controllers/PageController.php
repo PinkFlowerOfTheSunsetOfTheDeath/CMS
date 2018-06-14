@@ -13,6 +13,9 @@ class PageController extends Controller
 
     /**
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function listAction()
     {
@@ -62,17 +65,21 @@ class PageController extends Controller
 
         if (empty($page)) {
             $error = self::ERROR__PAGE_NOT_FOUND . $id;
-            $this->redirectWithError('/pages', $error);
+            $this->redirectWithError('/admin/pages', $error);
             exit;
         }
 
         $pageRepository->deleteById($id);
-        header("Location: /pages");
+        $this->redirect('/admin/pages');
     }
+
 
     /**
      * Render create page form
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function createAction()
     {
@@ -83,11 +90,9 @@ class PageController extends Controller
 
     public function saveAction()
     {
-        $pageRepository = new PageRepository();
         $page = new Page($_POST);
 
         $violations = $page->validate();
-
 
         if (count($violations) !== 0) {
             return $this->render('pages/formPages.html.twig', [
@@ -98,14 +103,15 @@ class PageController extends Controller
         }
 
         try {
+            $pageRepository = new PageRepository();
             // Redirect to the list of pages
             $pageRepository->create($page);
-            header("Location: /pages");
+            header("Location: /admin/pages");
             exit;
         } catch (\PDOException $e) {
             // Redirect to create page form with posted data
-            return $this->render('pages/form.html.twig', [
-                'pageData' => $page,
+            return $this->render('pages/formPages.html.twig', [
+                'page' => $page,
                 'errors' => ['An error occurred while creating the category in the Database'],
                 'action' => 'create'
             ]);
