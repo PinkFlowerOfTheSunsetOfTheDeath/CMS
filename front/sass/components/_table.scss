@@ -3,6 +3,16 @@
   background-color: white;
   @include font-size(16);
   font-weight: 400;
+  .link {
+    display: block;
+  }
+  &__buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+    .link {
+      margin-right: 10px;
+    }
+  }
   &__button {
     padding: 10px;
     cursor: pointer;
@@ -23,6 +33,7 @@
   }
   th {
     padding: .75rem;
+    font-weight: 600;
   }
   td {
     padding: 1rem 0.75rem;

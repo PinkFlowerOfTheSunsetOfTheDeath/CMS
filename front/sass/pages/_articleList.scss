@@ -1,0 +1,36 @@
+.articleList {
+  &__cardList {
+    display: flex;
+  }
+  &__cardItem {
+    &:first-child {
+      margin-left: 0;
+    }
+    margin-left: 20px;
+    width: calc(33.3333% - 20px);
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.11), 0 3px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      padding-left: 20px;
+      height: 50px;
+      margin-bottom: 0;
+      font-weight: 600;
+      @include font-size(20);
+      display: flex;
+      align-items: center;
+    }
+    &__value {
+      margin-bottom: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-weight: 700;
+      @include font-size(30);
+      color: $blue-light;
+    }
+  }
+}

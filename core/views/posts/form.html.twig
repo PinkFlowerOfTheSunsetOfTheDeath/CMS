@@ -1,0 +1,84 @@
+{% extends 'template/template.html.twig' %}
+
+
+
+{% block body %}
+    {% if action == 'edit' %}
+        <form class="articleAdd" method="post" action="/posts/{{ post.id }}/edit">
+    {% else %}
+        <form class="articleAdd" method="post" action="/posts/create">
+    {% endif %}
+        <div class="articleAdd__content">
+            <h2 class="articleAdd__title">
+                {% if post.edit %}
+                    Edit article
+                {% else %}
+                    Create an article
+                {% endif %}
+            </h2>
+            <div>
+                <div>
+                    <label class="article__label" for="title">Your title</label>
+                </div>
+                <input class="article__input" name="title" type="text" value="{{ post.title ?? '' }}">
+                <div>
+                    <label class="article__label" for="slug">Your slug</label>
+                </div>
+                <input class="article__input" name="slug" type="text" value="{{ post.slug ?? '' }}">
+            </div>
+            <div>
+                <textarea placeholder="Enter your contents">
+                    {{ post.content ?? '' }}
+                </textarea>
+            </div>
+            <div class="articleAdd__buttonAdd">
+                <button type="submit" class="rkmd-btn btn-green ripple-effect btn-lg">{{ action }}</button>
+            </div>
+        </div>
+        <div class="articleAdd__aside">
+            <div class="articleAdd__aside__card">
+                <h3 class="articleAdd__aside__title">Choisissez la visibilité de votre article</h3>
+                <p>{% if post.visible %}Actual state :{% else %}Choose a state{% endif %}
+                    {% if post.visible %}
+                    {% if post.visible == 1 %}
+                        <span>Visible</span>
+                    {% else %}
+                        <span>Invisible</span>
+                    {% endif %}
+                    {% else %}
+                <div>
+                    <button class="articleAdd__button articleAdd__button--visibility"
+                            title="choose visibility of the article">Invisible
+                    </button>
+                    <input class="input--invisible" id="visibilityArticle" type="number"
+                           value="{{ post.visible ?? 0 }}">
+                </div>
+                {% endif %}
+                </p>
+            </div>
+            <div class="articleAdd__aside__card">
+                <h3 class="articleAdd__aside__title">Tags</h3>
+                <div>
+                    <p class="articleAdd__aside__undertitle">Tags disponibles</p>
+                    <ul id="insertTagsSelect" class="articleAdd__aside__tagsList">
+                        <li data-pos="0" class="articleAdd__aside__tags articleAdd__aside__tags--selectable">
+                            <span>Aventure</span>
+                        </li>
+                        <li data-pos="1" class="articleAdd__aside__tags articleAdd__aside__tags--selectable">
+                            <span>coin</span>
+                        </li>
+                        <li data-pos="2" class="articleAdd__aside__tags articleAdd__aside__tags--selectable">
+                            <span>flop</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="articleAdd__aside__undertitle">Tags actifs</p>
+                    <ul id="insertTagsActif" class="articleAdd__aside__tagsList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/script/createPost.js"></script>
+{% endblock %}

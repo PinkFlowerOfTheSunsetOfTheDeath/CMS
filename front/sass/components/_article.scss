@@ -1,0 +1,22 @@
+.article {
+  &__input {
+    background: white;
+    border: none;
+    padding: 5px 5px 5px 0;
+    @include font-size(20);
+    font-weight: 400;
+    margin-bottom: 25px;
+    width: 100%;
+    display: inline-block;
+  }
+  &__label {
+    @include font-size(20);
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+  &__title {
+    font-weight: 600;
+    @include font-size(50);
+    margin: 100px 0 30px 0;
+  }
+}
