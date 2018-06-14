@@ -1,9 +1,9 @@
 # Database Configuration - Informations about database location and credentials
 database:
-  host: 127.0.0.1
+  host: localhost
   port: 3306
   user: root
-  password: root
+  password: 159753
   name: pinkflowers
 
 # Website Configuration - name, theme and init state
