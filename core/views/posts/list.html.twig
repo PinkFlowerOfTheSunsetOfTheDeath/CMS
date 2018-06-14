@@ -2,49 +2,59 @@
 
 
 {% block body %}
-    <div class="articleAdd">
-        <div class="articleAdd__content">
-            <h2>Add an article</h2>
-            <div>
-                <textarea placeholder="Enter your contents"></textarea>
+    <div class="articleList">
+        <div class="articleList__cardList">
+            <div class="articleList__cardItem">
+                <p class="articleList__cardItem__title">Number of posts</p>
+                <p class="articleList__cardItem__value">
+                    10
+                </p>
             </div>
-            <ul>
-                {% for post in posts %}
-                    <li>{{ post.title }}</li>
-                {% endfor %}
-                {% if error %}
-                    {{ error }}
-                {% endif %}
-            </ul>
+            <div class="articleList__cardItem">
+                <p class="articleList__cardItem__title">Number of visible post</p>
+                <p class="articleList__cardItem__value">
+                    7
+                </p>
+            </div>
         </div>
-        <div class="articleAdd__aside">
-            <div class="articleAdd__aside__card">
-                <h3 class="articleAdd__aside__title">Choisissez la visibilité de votre article</h3>
-                <p>Etat actuel : <span>Visible</span></p>
+        <div class="articleList__content">
+            <h2 class="article__title">List of articles</h2>
+            <div class="table__container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Creation</th>
+                        <th>Last modification</th>
+                        <th>Title</th>
+                        <th>Slug</th>
+                        <th>Visibility</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for post in posts %}
+                        <tr class="table__parent">
+                            <td class="table__id"><a class="link" href="/posts/{{ post.id }}/edit">{{ post.id }}</a></td>
+                            <td><a class="link" href="/posts/{{ post.id }}/edit">{{ post.created_at }}</a></td>
+                            <td><a class="link" href="/posts/{{ post.id }}/edit">{{ post.updated_at }}</a></td>
+                            <td class="table__title"><a class="link" href="/posts/{{ post.id }}/edit">{{ post.title }}</a></td>
+                            <td><a class="link" href="/posts/{{ post.id }}/edit">{{ post.slug }}</a></td>
+                            {% if post.visible == 1 %}
+                                <td><a class="link" href="/posts/{{ post.id }}/">Visible</a></td>
+                            {% else %}
+                                <td><a class="link" href="/posts/{{ post.id }}/">Invisible</a></td>
+                            {% endif %}
+                            <td class="table__buttonContainer">
+                                <a href="/posts/{{ post.id }}/edit" class="link table__button table__button--edit">Editer</a>
+                                <a href="/posts/{{ post.id }}/delete" class="table__button table__button--delete">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            <div class="articleAdd__aside__card">
-                <h3 class="articleAdd__aside__title">Tags</h3>
-                <div>
-                    <p class="articleAdd__aside__undertitle">Tags disponibles</p>
-                    <ul id="insertTagsSelect" class="articleAdd__aside__tagsList">
-                        <li data-pos="0" class="articleAdd__aside__tags articleList__aside__tags--selectable">
-                            <span>Aventure</span>
-                        </li>
-                        <li data-pos="1" class="articleAdd__aside__tags articleList__aside__tags--selectable">
-                            <span>coin</span>
-                        </li>
-                        <li data-pos="2" class="articleAdd__aside__tags articleList__aside__tags--selectable">
-                            <span>flop</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <p class="articleAdd__aside__undertitle">Tags actifs</p>
-                    <ul id="insertTagsActif" class="articleAdd__aside__tagsList">
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </div>
+    <script src="/script/listingPost.js"></script>
 {% endblock %}

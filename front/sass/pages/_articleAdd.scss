@@ -1,10 +1,39 @@
 .articleAdd {
   display: flex;
   justify-content: space-between;
-  margin: 0 -20px;
+  margin: 0;
+  &__title {
+    font-weight: 600;
+    @include font-size(50);
+    margin-bottom: 60px;
+  }
+  &__button {
+    border: 1px solid #f8f9fa;
+    padding: 7px;
+    color: #212529;
+    background-color: #f8f9fa;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: #e2e6ea;
+      border-color: #dae0e5;
+    }
+    &--active {
+      background-color: $green;
+      color: white;
+      &:hover {
+        background-color: #A7EB59;
+      }
+    }
+  }
+  &__buttonAdd {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
   &__content {
     width: 70%;
-    padding: 0 20px;
+    padding: 0 50px 0 0;
   }
   &__aside {
     width: 30%;
@@ -13,6 +42,12 @@
       background-color: white;
       margin-bottom: 20px;
       padding: 20px;
+      p {
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        font-size: 0.9375rem;
+      }
     }
     &__title {
       @include font-size(24);

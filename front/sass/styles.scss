@@ -12,9 +12,12 @@
 // pages
 @import './pages/connection';
 @import './pages/articleAdd';
+@import './pages/articleList';
 
 // components
 
 @import './components/_footer';
 @import './components/_header';
 @import './components/_aside';
+@import './components/table';
+@import './components/article';

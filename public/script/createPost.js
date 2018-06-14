@@ -1,7 +1,7 @@
 (function () {
 
-    var tags = Array.prototype.slice.call(document.querySelectorAll('.articleList__aside__tags--selectable'));
-    var tagsActif = Array.prototype.slice.call(document.querySelectorAll('.articleList__aside__tags--actifs'));
+    var tags = Array.prototype.slice.call(document.querySelectorAll('.articleAdd__aside__tags--selectable'));
+    var tagsActif = Array.prototype.slice.call(document.querySelectorAll('.articleAdd__aside__tags--actifs'));
 
     var parent = document.getElementById('insertTagsActif');
 
@@ -11,21 +11,21 @@
                 var element = createElement(tags[i].innerText, tags[i].getAttribute('data-pos'));
                 parent.appendChild(element);
                 tagsActif.splice(tagsActif.length, 1, tags[i]);
-                tags[i].classList.add('articleList__aside__tags--inactive');
+                tags[i].classList.add('articleAdd__aside__tags--inactive');
             })
         }
     }
 
     var removeActiveTag = function () {
         var pos = this.getAttribute('data-pos');
-        tags[parseFloat(pos)].classList.remove('articleList__aside__tags--inactive');
+        tags[parseFloat(pos)].classList.remove('articleAdd__aside__tags--inactive');
         this.parentNode.removeChild(this);
     };
 
     function createElement(value, pos) {
         var para = document.createElement("li");
         var span = document.createElement("span");
-        para.classList.add('articleList__aside__tags', 'articleList__aside__tags--actifs');
+        para.classList.add('articleAdd__aside__tags', 'articleAdd__aside__tags--actifs');
         var node = document.createTextNode(value + '');
         span.appendChild(node);
         para.appendChild(span);
@@ -35,5 +35,25 @@
     };
 
     init();
+
+
+    var visibility = document.querySelector('.articleAdd__button--visibility');
+    var visibilityInput = document.getElementById('visibilityArticle');
+
+    visibility.addEventListener('click', function (e) {
+        e.preventDefault();
+        setVisibility(this);
+    });
+
+    function setVisibility(element) {
+        if (element.innerText === "Visible") {
+            element.innerText = 'Invisble';
+            visibilityInput.value = 0;
+        }
+        else {
+            element.innerText = 'Visible';
+            visibilityInput.value = 1;
+        }
+    }
 
 })();

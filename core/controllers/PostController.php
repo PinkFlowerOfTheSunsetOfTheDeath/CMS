@@ -28,14 +28,17 @@ class  PostController extends Controller
         $errors = ErrorManager::getError();
         // Clear Errors from Session
         ErrorManager::clearError();
-        return $this->render('posts/form.html.twig', ['errors' => $errors]);
+        return $this->render('posts/form.html.twig', [
+            'errors' => $errors,
+            'action' => 'create'
+        ]);
     }
 
     /**
      * Save a Post in Database, and redirect user to created post details page, or redirect to creation form with errors
      * if there are any
      */
-    public function saveAction(): void
+    public function saveAction(): string
     {
         $postRepository = new PostRepository();
         $post = new Post($_POST);
@@ -43,10 +46,11 @@ class  PostController extends Controller
 
         // If any validation rules failed, redirect user to post creation page
         if (count($validateViolations) !== 0) {
-            ErrorManager::setError($validateViolations);
-            $_SESSION['form'] = $_POST;
-            header('Location: /posts/create');
-            exit;
+            return $this->render('posts/form.html.twig', [
+                'post' => $_POST,
+                'errors' => $validateViolations,
+                'action' => 'create',
+            ]);
         }
         // Redirect to created post details page
         $createdPost = $postRepository->create($post);
@@ -136,7 +140,10 @@ class  PostController extends Controller
             $post = new Post($_SESSION['form']);
         }
 
-        return $this->render('posts/form.html.twig', ['post' => $post]);
+        return $this->render('posts/form.html.twig', [
+            'post' => $post,
+            'action' => 'edit'
+        ]);
     }
 
     /**
