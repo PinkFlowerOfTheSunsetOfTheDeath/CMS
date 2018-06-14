@@ -1,3 +1,25 @@
+#### Configuration ####
+
+configure:
+  path: /configure
+  defaults: { _controller: 'App\Controllers\InitController::configureAction' }
+  methods: [GET]
+
+init:
+  path: /configure
+  defaults: { _controller: 'App\Controllers\InitController::initAction' }
+  methods: [POST]
+
+first_user:
+  path: /first-register
+  defaults: { _controller: 'App\Controllers\InitController::firstUserAction' }
+  methods: [GET]
+
+create_first_user:
+  path: /first-register
+  defaults: { _controller: 'App\Controllers\InitController::createFirstUserAction' }
+  methods: [POST]
+
 home_page:
   path: /
   defaults: { _controller: 'App\Controllers\FrontController::homeAction' }
@@ -6,6 +28,11 @@ home_page:
 post_page:
   path: /articles/{slug}
   defaults: { _controller: 'App\Controllers\FrontController::viewPostAction' }
+  methods: [GET]
+
+pages:
+  path: /{slug}
+  defaults: { _controller: 'App\Controllers\FrontController::viewPageAction' }
   methods: [GET]
 
 #### POSTS ROUTES ###
@@ -94,6 +121,11 @@ save_page:
   defaults: { _controller: 'App\Controllers\PageController::saveAction' }
   methods: [POST]
 
+edit_page:
+  path: /admin/pages/edit
+  defaults: { _controller: 'App\Controllers\PageController::editAction' }
+  methods: [GET]
+
 list_pages:
   path: /admin/pages
   defaults: { _controller: 'App\Controllers\PageController::listAction' }
@@ -135,8 +167,15 @@ getUser:
   defaults: { _controller: 'App\Controllers\AuthController::getAccount'}
   methods:  [POST]
 
+# DECONNEXION #
+
+logout:
+  path: /admin/logout
+  defaults: { _controller: 'App\Controllers\AuthController::logOut'}
+  methods:  [POST]
+
 # INSCRIPTION #
-create_user:
-  path: /register
-  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
-  methods: [GET]
+#create_user:
+#  path: /register
+#  defaults: { _controller: 'App\Controllers\AuthController::registerAction'}
+#  methods: [GET]

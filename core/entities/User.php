@@ -64,6 +64,16 @@ class User extends Entity
     }
 
     /**
+     * Hash a given password and set it to Entity
+     * @param string $password
+     */
+    public function setPassword(string $password)
+    {
+        $hashedPassword = hash("sha512", $password);
+        $this->password = $hashedPassword;
+    }
+
+    /**
      * Return whether user is admin
      * @return bool
      */
@@ -80,5 +90,13 @@ class User extends Entity
     public function isTokenValid(string $token)
     {
         return $this->token === $token;
+    }
+
+    /**
+     * @return string
+     */
+    public function generateToken()
+    {
+        $this->token = 'zoiehgoshglis';
     }
 }

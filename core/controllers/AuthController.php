@@ -106,4 +106,13 @@ class AuthController extends Controller
             ]);
         }
     }
+
+    /**
+     * Log out from current session
+     */
+    public function logOut()
+    {
+        unset($_SESSION);
+        $this->redirect('/admin/login');
+    }
 }

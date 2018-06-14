@@ -20,16 +20,17 @@ class PageRepository extends Repository
      * List all pages present in DB
      * @param string $slug
      * @param int $id
+     * @param int $visibility
      * @return array
      */
-    public function getAll($slug = '', $id = 0)
+    public function getAll($slug = '', int $id = 0, int $visibility = null)
     {
         $sql = 'SELECT 
         `id`,
         `title`,
-        `content`,
         `slug`,
-        `visibility` 
+        `content`,
+        `visibility`
         FROM `pages`';
 
         $sqlCond = [];
@@ -40,6 +41,10 @@ class PageRepository extends Repository
 
         if(!empty($id)) {
             $sqlCond[] = '`id` = :id';
+        }
+
+        if (!is_null($visibility)) {
+            $sqlCond[] = '`visibility` = :visibility';
         }
 
         if (count($sqlCond) > 0) {
@@ -54,6 +59,10 @@ class PageRepository extends Repository
 
         if (!empty($id)) {
             $stmt->bindValue(':id', $id);
+        }
+
+        if (!is_null($visibility)) {
+            $stmt->bindValue(':visibility', $visibility);
         }
 
         $stmt->execute();
@@ -76,6 +85,18 @@ class PageRepository extends Repository
        $page = current($this->getAll('',$id));
 
        return $page;
+    }
+
+    /**
+     * Query a slug in database by given slug
+     * @param string $slug - slug for page to query
+     * @param int $visibility - visibility for the page to query
+     * @return array|Page - Page if found, else empty array
+     */
+    public function getBySlug(string $slug, int $visibility)
+    {
+        $page = current($this->getAll($slug, 0, $visibility));
+        return $page;
     }
 
     /**

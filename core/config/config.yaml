@@ -3,7 +3,7 @@ database:
   host: localhost
   port: 3306
   user: root
-  password: root
+  password: 159753
   name: pinkflowers
 
 # Website Configuration - name, theme and init state

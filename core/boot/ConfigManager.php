@@ -1,5 +1,6 @@
 <?php
 namespace App\Boot;
+use App\Entities\Config;
 use App\Helpers\Database;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
@@ -86,5 +87,31 @@ class ConfigManager
         $config['website']['theme'] = $theme;
 
         $this->saveConfig($config);
+    }
+
+    /**
+     * @param Config $conf
+     * @param bool $init
+     * @return array
+     */
+    public function updateConfig(Config $conf, bool $init = true)
+    {
+        $config = [
+            'database' => [
+                'name' => $conf->name,
+                'user' => $conf->user,
+                'password' => $conf->password,
+                'host' => $conf->host,
+                'port' => $conf->port,
+            ],
+            'website' => [
+                'initialized' => true,
+                'name' => $conf->web,
+                'theme' => 'default'
+            ]
+        ];
+
+        $this->saveConfig($config);
+        return $config;
     }
 }
