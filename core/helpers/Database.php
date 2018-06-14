@@ -16,9 +16,9 @@ class Database
         if (is_null(self::$db)) {
 //            try {
                 self::$db = new \PDO(
-                    'mysql:host=adolf_db;dbname=pinkflowers;port=3306',
+                    'mysql:host=localhost;dbname=pinkflowers;port=3306',
                     'root',
-                    'root'
+                    '159753'
                 );
                 self::$db->exec("SET NAMES UTF8");
 //            } catch (\PDOException $exception) {

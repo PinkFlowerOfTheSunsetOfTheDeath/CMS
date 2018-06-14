@@ -32,6 +32,9 @@ class CategoryController extends Controller
             'categories' => $categories,
             'error' => $error
         ]);
+
+
+
     }
 
     /**
@@ -173,10 +176,10 @@ class CategoryController extends Controller
         $categoryRepository = new CategoryRepository();
         $categoryToDelete = $categoryRepository->getById($id);
         if (empty($categoryToDelete)) {
-            header("Location: /posts");
+            header("Location: /categories");
             exit;
         }
         $categoryRepository->delete($id);
-        header("Location: /posts");
+        header("Location: /categories");
     }
 }
