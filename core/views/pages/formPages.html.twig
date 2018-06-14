@@ -2,13 +2,13 @@
 
 {% block body %}
     {% if action == 'edit' %}
-        <form class="pageAdd" method="post" action="/pages/{{ post.id }}/edit">
+        <form class="pageAdd" method="post" action="/pages/{{ page.id }}/edit">
     {% else %}
         <form class="pageAdd" method="post" action="/pages/create">
     {% endif %}
         <div class="pageAdd__content">
             <h2 class="pageAdd__title">
-                {% if post.edit %}
+                {% if page.edit %}
                     Edit page
                 {% else %}
                     Create a page
@@ -18,15 +18,15 @@
                 <div>
                     <label class="page__label" for="title">Your title</label>
                 </div>
-                <input class="page__input" name="title" type="text" value="{{ post.title ?? '' }}">
+                <input class="page__input" name="title" type="text" value="{{ page.title ?? '' }}">
                 <div>
                     <label class="page__label" for="slug">Your slug</label>
                 </div>
-                <input class="page__input" name="slug" type="text" value="{{ post.slug ?? '' }}">
+                <input class="page__input" name="slug" type="text" value="{{ page.slug ?? '' }}">
             </div>
             <div>
                 <textarea placeholder="Enter your contents">
-                    {{ post.content ?? '' }}
+                    {{ page.content ?? '' }}
                 </textarea>
             </div>
             <div class="pageAdd__buttonAdd">
@@ -36,9 +36,9 @@
         <div class="pageAdd__aside">
             <div class="pageAdd__aside__card">
                 <h3 class="pageAdd__aside__title">Choose your page's visibility</h3>
-                <p>{% if post.visible %}Actual state :{% else %}Choose a state{% endif %}
-                    {% if post.visible %}
-                    {% if post.visible == 1 %}
+                <p>{% if page.visible %}Actual state :{% else %}Choose a state{% endif %}
+                    {% if page.visible %}
+                    {% if page.visible == 1 %}
                         <span>Visible</span>
                     {% else %}
                         <span>Invisible</span>
@@ -48,7 +48,7 @@
                     <button class="pageAdd__button pageAdd__button--visibility"
                             title="choose visibility of the page">Invisible
                     </button>
-                    <input class="input--invisible" id="visibilitypage" type="number" value="{{ post.visible ?? 0 }}">
+                    <input class="input--invisible" id="visibilitypage" type="number" value="{{ page.visible ?? 0 }}">
                 </div>
                 {% endif %}
                 </p>
@@ -77,5 +77,5 @@
             </div>
         </div>
     </form>
-    <script src="/script/createPost.js"></script>
+    <script src="/script/createPage.js"></script>
 {% endblock %}
