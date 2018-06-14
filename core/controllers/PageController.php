@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 
 use App\Helpers\Controller;
+use App\Helpers\ErrorManager;
 use App\Repositories\PageRepository;
 
 class PageController extends Controller
@@ -64,5 +65,20 @@ class PageController extends Controller
 
         $pageRepository->deleteById($id);
         header("Location: /pages");
+    }
+
+    /**
+     * Render create page form
+     * @return string
+     */
+    public function createAction()
+    {
+        $errors = ErrorManager::getError();
+        // Clear Errors from Session
+
+        return $this->render("pages/form.html.twig", [
+            'errors' => $errors,
+            'action' => 'form'
+        ]);
     }
 }

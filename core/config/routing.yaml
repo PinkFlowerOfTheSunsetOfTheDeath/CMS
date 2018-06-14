@@ -100,6 +100,16 @@ delete_page:
   defaults: { _controller: 'App\Controllers\PageController::deleteAction' }
   methods: [GET]
 
+create_page:
+  path: /pages/create
+  defaults: { _controller: 'App\Controllers\PageController::createAction' }
+  methods: [GET]
+
+create_page:
+  path: /pages/create
+  defaults: { _controller: 'App\Controllers\PageController::saveAction' }
+  methods: [POST]
+
 #### THEMES ROUTES ####
 
 list_themes:
