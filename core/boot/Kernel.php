@@ -54,8 +54,8 @@ class Kernel
      */
     public function run()
     {
-        // TODO: Load Middlewares here
-        Router::route();
+        $middlewares = $this->loadMiddlewares();
+        Router::route($middlewares);
     }
 
     /**
@@ -73,6 +73,8 @@ class Kernel
      */
     public function loadMiddlewares()
     {
-        return [];
+        return [
+            'AuthMiddleware::middlewareCheck' => 'isAuthenticated'
+        ];
     }
 }

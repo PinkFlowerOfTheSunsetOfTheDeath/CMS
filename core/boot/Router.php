@@ -28,13 +28,42 @@ class Router
     }
 
     /**
+     * @param array $middlewares
+     * @param string $path
+     */
+    private static function executeMiddlewares(array $middlewares, string $path)
+    {
+        foreach ($middlewares as $middlewareCondition => $middlewareAction) {
+            // parse Middleware condition
+            $middlewareClass = "App\\Middlewares\\" . explode('::', $middlewareCondition)[0];
+            $middlewareCheck = explode('::', $middlewareCondition)[1];
+
+            // Create middleware object
+            $middlewareObject = new $middlewareClass();
+            // Execute Middleware's check
+            $condition = $middlewareObject->${$middlewareCheck}($path);
+
+            if (
+                !$condition
+                || !method_exists($middlewareObject, $middlewareCheck)
+                || !method_exists($middlewareObject, $middlewareAction)
+            ) {
+                continue;
+            }
+
+            // execute middleware
+            call_user_func([$middlewareObject, $middlewareAction]);
+        }
+    }
+
+    /**
+     * @param array $middlewares - Array of middlewares
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public static function route()
+    public static function route(array $middlewares = [])
     {
-        // TODO: Manage middlewares
         // Request Object from Http foundation
         $request = Request::createFromGlobals();
 
@@ -42,7 +71,10 @@ class Router
         $requestContext = new RequestContext();
         $requestContext->fromRequest($request);
 
+        // Execute Middlewares
+        self::executeMiddlewares($middlewares, $request->getPathInfo());
 
+        // Create URL Matcher
         $matcher = new UrlMatcher(self::$routes, $requestContext);
 
         try {
