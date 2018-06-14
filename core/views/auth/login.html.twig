@@ -3,7 +3,7 @@
 {% block body %}
     {% set nav = 0 %}
     <div class="connection">
-        <div class="connection__container">
+        <form action="/login" method="post" class="connection__container">
             <div class="connection__userImage">
                 <img style="width: 88px; height: 88px; background-color: grey;" src="" alt="">
             </div>
@@ -15,12 +15,21 @@
                     <form action="">
                         <div class="connection__field">
                             <label for="">Mail address or username</label>
-                            <input class="connection__emailCheck" type="email" placeholder="mail@domaine.com">
+                            <input
+                                class="connection__emailCheck"
+                                type="text"
+                                placeholder="mail@domaine.com"
+                                name="username"
+                                value="{{ credentials.username ?? '' }}">
                             <span class="connection__error"></span>
                         </div>
                         <div class="connection__field">
                             <label for="">Password</label>
-                            <input type="password" placeholder="Mot de passe">
+                            <input
+                                type="password"
+                                name="password"
+                                value="{{ credentials.password ?? '' }}"
+                                placeholder="Mot de passe">
                         </div>
                     </form>
                     <div class="connection__forgetPsw">
@@ -34,6 +43,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 {% endblock body %}
