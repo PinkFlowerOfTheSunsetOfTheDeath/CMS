@@ -85,6 +85,13 @@ view_category:
   defaults: { _controller: 'App\Controllers\CategoryController::viewAction' }
   methods: [GET]
 
+#### PAGES ROUTES ###
+
+list_pages:
+  path: /pages
+  defaults: { _controller: 'App\Controllers\PageController::listAction' }
+  methods: [GET]
+
 #### ACCOUNT ROUTES ###
 
 # CONNEXION #

@@ -40,6 +40,10 @@ class Page extends Entity
     public $visibility = 0;
 
 
+    /**
+     * Constraints to add new page to DB for validation
+     * @return array
+     */
     public function rules() : array {
         return [
            'title' => [
