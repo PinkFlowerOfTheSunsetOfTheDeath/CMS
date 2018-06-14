@@ -1,5 +1,7 @@
 <?php
 namespace App\Controllers;
+use App\Boot\ConfigManager;
+use App\Boot\ThemeManager;
 use App\Entities\Theme;
 use App\Helpers\Controller;
 
@@ -10,6 +12,7 @@ use App\Helpers\Controller;
 class ThemeController extends Controller
 {
     const THEME_DIR = __DIR__ . '/../../public/content/themes/';
+    const ERROR__NOT_FOUND = 'Theme not found: ';
 
     /**
      * @return string - HTML Layour for themes management page
@@ -30,11 +33,35 @@ class ThemeController extends Controller
         $themes = array_map(function($theme) {
             $themeData = [
                 'image' => "/content/themes/$theme/screenshot.jpg",
-                'name' => $theme
+                'name' => $theme,
+                'selected' => $theme == ThemeManager::getTheme()
             ];
             return new Theme($themeData);
         }, $themes);
 
         return $this->render('themes/list.html.twig', ['themes' => $themes ?? []]);
+    }
+
+    /**
+     * Select a theme to display in front office
+     * @param string $name - Name of the theme to select
+     */
+    public function selectAction(string $name)
+    {
+        $themeDirs = scandir(self::THEME_DIR);
+
+        // if theme not found from custom themes directory, redirect to theme listing
+        if (!in_array($name, $themeDirs)) {
+            $error = self::ERROR__NOT_FOUND . $name;
+            $this->redirectWithError('/themes', $error);
+            exit;
+        }
+
+        // Update website configuration with new active theme
+        $configManager = new ConfigManager();
+        $configManager->updateActiveTheme($name);
+
+        // Redirect to themes listing page
+        $this->redirect('/themes');
     }
 }
