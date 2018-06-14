@@ -90,11 +90,17 @@ list_pages:
   defaults: { _controller: 'App\Controllers\PageController::listAction' }
   methods: [GET]
 
+delete_page:
+  path: /pages/{id}/delete
+  defaults: { _controller: 'App\Controllers\PageController::deleteAction' }
+  methods: [GET]
+
 #### THEMES ROUTES ####
 
 list_themes:
   path: /themes
   defaults: { _controller: 'App\Controllers\ThemeController::listAction' }
+
 
 #### ACCOUNT ROUTES ###
 

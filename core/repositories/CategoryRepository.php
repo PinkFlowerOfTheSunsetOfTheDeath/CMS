@@ -47,6 +47,7 @@ class CategoryRepository extends Repository
         foreach ($rows as $row) {
             $categories[] = new Category($row);
         }
+
         return $categories;
     }
 
@@ -69,6 +70,7 @@ class CategoryRepository extends Repository
     public function getBySlug(string $slug)
     {
         $category = current($this->getAll($slug));
+
         return $category;
     }
 
@@ -101,6 +103,7 @@ class CategoryRepository extends Repository
         $this->errorManagement($stmt);
 
         $category->id = $db->lastInsertId();
+
         return $category;
     }
 
@@ -144,6 +147,7 @@ class CategoryRepository extends Repository
         $stmt->execute();
 
         $this->errorManagement($stmt);
+
         return true;
     }
 }
