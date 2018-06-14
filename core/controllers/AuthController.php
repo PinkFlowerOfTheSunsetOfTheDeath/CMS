@@ -35,6 +35,10 @@ class AuthController extends Controller
      */
     public function loginAction()
     {
+        // Redirect to posts dashboard if admin is logged in
+        if (isset($_SESSION['user'])) {
+            $this->redirect('/admin/posts');
+        }
         return $this->render('auth/login.html.twig');
     }
 
@@ -89,7 +93,7 @@ class AuthController extends Controller
                 'token' => $user->token,
                 'email' => $user->email
             ];
-            $this->redirect('/posts');
+            $this->redirect('/admin/posts');
         } else {
             // rerender
             $error = "Missing password or username";
