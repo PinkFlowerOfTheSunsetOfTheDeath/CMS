@@ -95,6 +95,12 @@ list_pages:
 list_themes:
   path: /themes
   defaults: { _controller: 'App\Controllers\ThemeController::listAction' }
+  methods: [GET]
+
+select_theme:
+  path: /themes/{name}/select
+  defaults: { _controller: 'App\Controllers\ThemeController::selectAction' }
+  methods: [GET]
 
 #### ACCOUNT ROUTES ###
 
