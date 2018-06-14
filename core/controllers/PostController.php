@@ -182,4 +182,30 @@ class  PostController extends Controller
 
         $this->redirect('/posts');
     }
+
+    /**
+     * Update current post visibility to 0 or 1
+     * @param id
+     */
+    public function updateVisibilityAction($id)
+    {
+        $postRepository = new PostRepository();
+        $post = $postRepository->getById($id);
+
+        if (empty($post)) {
+            $error = self::ERROR__POST_NOT_FOUND . $id;
+            $this->redirectWithError('/posts', $error);
+            exit;
+        }
+
+        try {
+            $postRepository->updateVisibility($post);
+        } catch (\PDOException $e) {
+            $error = self::ERROR__DATABASE;
+            // Redirect with error
+            $this->redirectWithError("/posts", $error);
+            exit;
+        }
+
+    }
 }
