@@ -7,7 +7,7 @@ use App\Repositories\PageRepository;
 
 class PageController extends Controller
 {
-    const ERROR__NOT_FOUND = 'Page not found for id: ';
+    const ERROR__PAGE_NOT_FOUND = 'Page not found for id: ';
 
     /**
      * @return string
@@ -23,5 +23,20 @@ class PageController extends Controller
             'pages' => $pages,
             'error' => $error
         ]);
+    }
+
+    public function deleteAction($id)
+    {
+        $pageRepository = new PageRepository();
+        $page = $pageRepository->getById($id);
+
+        if (empty($page)) {
+            $error = self::ERROR__PAGE_NOT_FOUND . $id;
+            $this->redirectWithError('/pages', $error);
+            exit;
+        }
+
+        $pageRepository->deleteById($id);
+        header("Location: /pages");
     }
 }
