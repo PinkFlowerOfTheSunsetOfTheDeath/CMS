@@ -152,4 +152,32 @@ class PageRepository extends Repository
         $page->id = $db->lastInsertId();
         return $page;
     }
+
+    /**
+     * Update a given Page in Database
+     * @param Page $page - Page to update
+     * @return bool - true if succeeded
+     * @throws \PDOException - PDO exception raised if error encountered
+     */
+    public function update(Page $page)
+    {
+        $sql = 'UPDATE `pages` 
+                SET 
+                  `title` = :title,
+                  `slug` = :slug,
+                  `content` = :content,
+                  `visibility` = :visibility';
+
+        $stmt = $this->getDB()->prepare($sql);
+        $stmt->bindValue(':title', $page->title);
+        $stmt->bindValue(':slug', $page->slug);
+        $stmt->bindValue(':content', $page->content);
+        $stmt->bindValue(':visibility', $page->visibility);
+
+        $stmt->execute();
+
+        $this->errorManagement($stmt);
+
+        return true;
+    }
 }

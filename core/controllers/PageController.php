@@ -54,6 +54,60 @@ class PageController extends Controller
         ]);
     }
 
+    public function editAction($id)
+    {
+        $pageRepository = new PageRepository();
+        $page = $pageRepository->getById($id);
+
+        if (empty($page)) {
+            $error = self::ERROR__PAGE_NOT_FOUND . $id;
+            $this->redirectWithError('/admin/pages', $error);
+            exit;
+        }
+
+        return $this->render('pages/formPages.html.twig', [
+            'page' => $page,
+            'action' => 'edit'
+        ]);
+    }
+
+    public function updateAction(int $id)
+    {
+        $pageRepository = new PageRepository();
+
+        $page = $pageRepository->getById($id);
+
+        if (empty($page)) {
+            $error = self::ERROR__PAGE_NOT_FOUND . $id;
+            $this->redirectWithError('/admin/pages', $error);
+            exit;
+        }
+
+        unset($_POST['id']);
+        $page->hydrate($_POST);
+
+        // Validate user data
+        $violations = $page->validate();
+        if (!empty($violations)) {
+            return $this->render('pages/formPages.html.twig', [
+               'page' => $_POST,
+               'errors' => $violations,
+            ]);
+        }
+
+        try {
+            $pageRepository->update($page);
+        } catch (\PDOException $e) {
+            $errors = [$e->getMessage()];
+            return $this->render('page/formPages.html.twig', [
+               'errors' => $errors,
+                'page' => $page
+            ]);
+        }
+
+        $this->redirect('/admin/pages');
+    }
+
 
     /**
      * Delete page by given id
