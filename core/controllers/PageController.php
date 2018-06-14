@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 
+use App\Entities\Page;
 use App\Helpers\Controller;
 use App\Helpers\ErrorManager;
 use App\Repositories\PageRepository;
@@ -80,5 +81,36 @@ class PageController extends Controller
             'errors' => $errors,
             'action' => 'form'
         ]);
+    }
+
+    public function saveAction()
+    {
+        $pageRepository = new PageRepository();
+        $page = new Page($_POST);
+
+        $violations = $page->validate();
+
+        if (count($violations) !== 0) {
+            return $this->render('pages/form.html.twig', [
+                'page' => $page,
+                'errors' => $violations,
+                'action' => 'create'
+            ]);
+        }
+
+        try {
+            // Redirect to the list of pages
+            $pageRepository->create($page);
+            header("Location: /pages");
+            exit;
+        } catch (\PDOException $e) {
+            // Redirect to create page form with posted data
+            return $this->render('pages/form.html.twig', [
+                'pageData' => $page,
+                'errors' => ['An error occurred while creating the category in the Database'],
+                'action' => 'create'
+            ]);
+        }
+
     }
 }
