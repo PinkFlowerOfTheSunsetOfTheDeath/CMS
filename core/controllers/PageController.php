@@ -88,8 +88,9 @@ class PageController extends Controller
 
         $violations = $page->validate();
 
+
         if (count($violations) !== 0) {
-            return $this->render('pages/form.html.twig', [
+            return $this->render('pages/formPages.html.twig', [
                 'page' => $page,
                 'errors' => $violations,
                 'action' => 'create'

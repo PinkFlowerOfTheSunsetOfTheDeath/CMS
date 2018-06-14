@@ -2,9 +2,9 @@
 
 {% block body %}
     {% if action == 'edit' %}
-        <form class="pageAdd" method="post" action="/pages/{{ page.id }}/edit">
+        <form class="pageAdd" method="post" action="/admin/pages/{{ page.id }}/edit">
     {% else %}
-        <form class="pageAdd" method="post" action="/pages/create">
+        <form class="pageAdd" method="post" action="/admin/pages/create">
     {% endif %}
         <div class="pageAdd__content">
             <h2 class="pageAdd__title">
@@ -48,7 +48,7 @@
                     <button class="pageAdd__button pageAdd__button--visibility"
                             title="choose visibility of the page">Invisible
                     </button>
-                    <input class="input--invisible" id="visibilitypage" type="number" value="{{ page.visible ?? 0 }}">
+                    <input class="input--invisible" id="visibilityPage" type="number" value="{{ page.visible ?? 0 }}">
                 </div>
                 {% endif %}
                 </p>

@@ -34,26 +34,26 @@
                     <tbody>
                     {% for page in pages %}
                         <tr class="table__parent">
-                            <td class="table__id"><a class="link" href="/pages/{{ page.id }}/edit">{{ page.id }}</a></td>
-                            <td><a class="link" href="/pages/{{ page.id }}/edit">{{ page.created_at }}</a></td>
-                            <td><a class="link" href="/pages/{{ page.id }}/edit">{{ page.updated_at }}</a></td>
-                            <td class="table__title"><a class="link" href="/pages/{{ page.id }}/edit">{{ page.title }}</a></td>
-                            <td><a class="link" href="/pages/{{ page.id }}/edit">{{ page.slug }}</a></td>
+                            <td class="table__id"><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.id }}</a></td>
+                            <td><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.created_at }}</a></td>
+                            <td><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.updated_at }}</a></td>
+                            <td class="table__title"><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.title }}</a></td>
+                            <td><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.slug }}</a></td>
                             {% if page.visible == 1 %}
-                                <td><a class="link" href="/pages/{{ page.id }}/">Visible</a></td>
+                                <td><a class="link" href="/admin/pages/{{ page.id }}/">Visible</a></td>
                             {% else %}
-                                <td><a class="link" href="/pages/{{ page.id }}/">Invisible</a></td>
+                                <td><a class="link" href="/admin/pages/{{ page.id }}/">Invisible</a></td>
                             {% endif %}
                             <td class="table__buttonContainer">
-                                <a href="/pages/{{ page.id }}/edit" class="link table__button table__button--edit">Edit</a>
-                                <a href="/pages/{{ page.id }}/delete" class="table__button table__button--delete">Delete</a>
+                                <a href="/admin/pages/{{ page.id }}/edit" class="link table__button table__button--edit">Edit</a>
+                                <a href="/admin/pages/{{ page.id }}/delete" class="table__button table__button--delete">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> 
     </div>
     <script src="/script/listingPost.js"></script>
 {% endblock %}
