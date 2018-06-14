@@ -1,4 +1,37 @@
-{% for theme in themes %}
-    {{ theme.name }}
-    <img src="{{ theme.image }}" alt="">
-{% endfor %}
+{% extends 'template/template.html.twig' %}
+
+{% block body %}
+    <div class="themes">
+        <div class="themes__head">
+            <img class="themes__preview__image" src="" alt="">
+        </div>
+        <div class="themes__list">
+            <div class="themes__head">
+                <h3>Listes des thèmes</h3>
+            </div>
+            <div class="themes__listItem">
+                {% for theme in themes %}
+                    <a class="link link__theme" href="">
+                        {% if theme.selected == true %}
+                        <div class="themes__item themes__item--active">
+                            {% else %}
+                            <div class="themes__item">
+                                {% endif %}
+                                <p class="themes__item__title">{{ theme.name }}</p>
+                                <img src="{{ theme.image }}" alt="">
+                                {% if theme.selected != true %}
+                                <div class="themes__buttonContainer">
+                                    <button id="validateTheme" class='rkmd-btn ripple-effect btn-lg'>
+                                        Activer ce thème
+                                    </button>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="/script/themes.js"></script>
+{% endblock %}
