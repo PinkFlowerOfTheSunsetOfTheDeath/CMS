@@ -1,5 +1,10 @@
 <?php
 namespace App\Boot;
+
+/**
+ * Class Kernel - Boot the application
+ * @package App\Boot
+ */
 class Kernel
 {
     /**
@@ -33,7 +38,7 @@ class Kernel
      */
     public function bootApplication()
     {
-        // Boot Application Configuration
+        // Boot Application Configuration - Database and Theme
         $config = $this->bootConfiguration();
         $this->configManager->configureWebsite($config);
         // Boot Routing configuration

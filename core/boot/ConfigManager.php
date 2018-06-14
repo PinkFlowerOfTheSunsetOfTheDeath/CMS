@@ -53,6 +53,9 @@ class ConfigManager
     {
         // Configure database access
         Database::configureDB($config['database']);
+
+        // Configure Theme
+        ThemeManager::setTheme($config['website']['theme']);
     }
 
     /**

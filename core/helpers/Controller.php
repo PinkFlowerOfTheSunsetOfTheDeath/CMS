@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Helpers;
+use App\Boot\ThemeManager;
+
 class Controller {
+    public static $viewDirectory = __DIR__ . '/../views/';
 
     /**
      * Initialize twig environment
      * @return \Twig_Environment
      */
     private static function initializeTwig() {
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../views/');
+        $loader = new \Twig_Loader_Filesystem(self::$viewDirectory);
         return new \Twig_Environment($loader);
     }
 
@@ -24,6 +27,19 @@ class Controller {
     public function render(string $fileName, array $variables = []): string {
         $twig = self::initializeTwig();
         return $twig->render($fileName, $variables);
+    }
+
+    /**
+     * Render Front office views from active theme
+     * @param string $fileName - Name of the file to load
+     */
+    public function renderFront(string $fileName)
+    {
+        // TODO: Check that theme/file/dir exists
+        $viewDir = ThemeManager::getTheme();
+        $file = __DIR__ . "/../../content/themes/$viewDir/$fileName";
+
+        require $file;
     }
 
     /**
