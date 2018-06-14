@@ -28,6 +28,6 @@ class FrontController extends Controller
             $this->renderFront('404.php');
         }
 
-        $this->renderFront('article.php');
+        $this->renderFront('article.php', ['post' => $post]);
     }
 }
