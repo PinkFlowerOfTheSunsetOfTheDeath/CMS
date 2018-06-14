@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `pinkflowers`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `pinkflowers` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `pinkflowers`;
-
---
 -- Table structure for table `categories`
 --
 
@@ -152,6 +144,9 @@ LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
+INSERT INTO `roles` (`label`) VALUES('admin');
+INSERT INTO `roles` (`label`) VALUES('member');
+
 --
 -- Table structure for table `users`
 --
@@ -164,6 +159,7 @@ CREATE TABLE `users` (
   `password` varchar(200) NOT NULL,
   `email` varchar(150) NOT NULL,
   `role_id` int(3) DEFAULT '1',
+  `token` varchar(255) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`),

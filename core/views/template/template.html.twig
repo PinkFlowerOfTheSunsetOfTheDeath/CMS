@@ -27,25 +27,29 @@
             </li>
             <li class="aside__list__item aside__list__item--extanded">
                 <div>
-                    <a class="link" href="/posts">
+                    <a class="link" href="/admin/posts">
                         <img src="/image/stylo.svg" alt=""> <span>Articles</span>
                     </a>
                 </div>
                 <ul>
                     <li>
-                        <a class="link link--aside" href="/posts/create">Ajouter</a>
+                        <a class="link link--aside" href="/admin/posts/create">Ajouter</a>
                     </li>
-                    <li>Catégories</li>
                 </ul>
             </li>
             <li class="aside__list__item">
-                <img src="/image/page.svg" alt=""> <span>Pages</span>
+                <div>
+                    <a class="link" href="/admin/pages">
+                        <img src="/image/page.svg" alt=""> <span>Pages</span>
+                    </a>
+                </div>
             </li>
             <li class="aside__list__item">
-                <img src="/image/user.svg" alt=""> <span>Users</span>
-            </li>
-            <li class="aside__list__item">
-                <img src="/image/paint.svg" alt=""> <span>Thèmes</span>
+                <div>
+                    <a class="link" href="/admin/themes">
+                        <img src="/image/paint.svg" alt=""> <span>Thèmes</span>
+                    </a>
+                </div>
             </li>
         </ul>
     </nav>
@@ -64,6 +68,11 @@
             </li>
         </div>
         <div>
+            <li class="header__list__item">
+                <a class="link" href="/admin/logout">
+                    <img class="header__list__logout" src="/image/logout.svg" alt="">
+                </a>
+            </li>
             <li class="header__list__item">
                 Nom du user
             </li>

@@ -1,0 +1,56 @@
+{% extends 'template/template.html.twig' %}
+
+{% block body %}
+<div class="pageList">
+        <div class="pageList__cardList">
+            <div class="pageList__cardItem">
+                <p class="pageList__cardItem__title">Number of posts</p>
+                <p class="pageList__cardItem__value">
+                    10
+                </p>
+            </div>
+            <div class="pageList__cardItem">
+                <p class="pageList__cardItem__title">Number of visible post</p>
+                <p class="pageList__cardItem__value">
+                    7
+                </p>
+            </div>
+        </div>
+        <div class="pageList__content">
+            <h2 class="page__title">List of pages</h2>
+            <div class="table__container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Slug</th>
+                        <th>Visibility</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for page in pages %}
+                        <tr class="table__parent">
+                            <td class="table__id"><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.id }}</a></td>
+                            <td class="table__title"><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.title }}</a></td>
+                            <td><a class="link" href="/admin/pages/{{ page.id }}/edit">{{ page.slug }}</a></td>
+                            {% if page.visible == 1 %}
+                                <td><a class="link" href="/admin/pages/{{ page.id }}/">Visible</a></td>
+                            {% else %}
+                                <td><a class="link" href="/admin/pages/{{ page.id }}/">Invisible</a></td>
+                            {% endif %}
+                            <td class="table__buttonContainer">
+                                <a href="/admin/pages/{{ page.id }}/edit" class="link table__button table__button--edit">Edit</a>
+                                <a href="/admin/pages/{{ page.id }}/delete" class="table__button table__button--delete">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+                <a href="/admin/pages/create" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="float: right;">AJOUTER</a>
+        </div> 
+    </div>
+    <script src="/script/listingPost.js"></script>
+{% endblock %}
