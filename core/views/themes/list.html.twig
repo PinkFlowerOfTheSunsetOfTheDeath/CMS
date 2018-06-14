@@ -13,10 +13,9 @@
                 {% for theme in themes %}
                     <div class="themes__card__wrapper">
                         <a class="link link__theme themes__card__link" href=""></a>
-                        {% if theme.selected == true %}
                         <div class="themes__card__imageWrapper">
                             <div class="themes__card__padding"></div>
-                            <img class="themes__card__image" src="" alt="">
+                            <img class="themes__card__image" src="{{ theme.image }}" alt="">
                         </div>
                         <div class="themes__card__content">
                             <div class="themes__card__row">
@@ -24,11 +23,11 @@
                                 <p class="themes__card__desc">Default template</p>
                             </div>
                             <div class="themes__card__row">
-                                {% if theme.selected != true %}
+                                {% if theme.selected == false %}
                                     <div class="themes__buttonContainer">
-                                        <button id="validateTheme" class='rkmd-btn ripple-effect btn-lg'>
-                                            Activer ce thème
-                                        </button>
+                                        <a style="background: #fff;" href="/admin/themes/{{ theme.name }}/select" id="validateTheme" class='rkmd-btn ripple-effect btn-lg'>
+                                            Activate this theme
+                                        </a>
                                     </div>
                                 {% endif %}
                             </div>

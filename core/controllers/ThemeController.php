@@ -62,6 +62,6 @@ class ThemeController extends Controller
         $configManager->updateActiveTheme($name);
 
         // Redirect to themes listing page
-        $this->redirect('/themes');
+        $this->redirect('/admin/themes');
     }
 }
