@@ -24,7 +24,7 @@ class PageController extends Controller
         $error = isset($_GET['error']) ? $_GET['error'] : '';
 
         return $this->render("pages/listPages.html.twig", [
-            'pages' => $pages,
+            'pages' => array_reverse($pages),
             'error' => $error
         ]);
     }

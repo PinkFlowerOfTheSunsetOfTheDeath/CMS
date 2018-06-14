@@ -73,7 +73,7 @@ class  PostController extends Controller
         $error = isset($_GET['error']) ? $_GET['error'] : '';
 
         return $this->render('posts/list.html.twig', [
-            'posts' => $posts,
+            'posts' => array_reverse($posts),
             'error' => $error,
         ]);
     }
