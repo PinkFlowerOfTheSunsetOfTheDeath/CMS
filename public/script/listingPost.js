@@ -32,4 +32,11 @@
         deleteButtons[i].addEventListener('click', createModal);
     }
 
+
+    var numberPost = document.getElementById('numberPost');
+    var posts = document.querySelectorAll('.table__parent');
+
+    numberPost.innerText = posts.length + '';
+
+
 })();
