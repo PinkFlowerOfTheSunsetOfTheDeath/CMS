@@ -90,6 +90,11 @@ list_pages:
   defaults: { _controller: 'App\Controllers\PageController::listAction' }
   methods: [GET]
 
+delete_page:
+  path: /pages/{id}/delete
+  defaults: { _controller: 'App\Controllers\PageController::deleteAction' }
+  methods: [GET]
+
 #### ACCOUNT ROUTES ###
 
 # CONNEXION #
