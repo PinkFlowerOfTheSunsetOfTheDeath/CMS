@@ -38,21 +38,18 @@
         <div class="articleAdd__aside">
             <div class="articleAdd__aside__card">
                 <h3 class="articleAdd__aside__title">Choisissez la visibilité de votre article</h3>
-                <p>{% if post.visible %}Actual state :{% else %}Choose a state{% endif %}
-                    {% if post.visible %}
-                    {% if post.visible == 1 %}
+                <p>{% if post.visibility %}Actual state :{% else %}Choose a state{% endif %}
+                    {% if post.visibility == 1 %}
                         <span>Visible</span>
                     {% else %}
                         <span>Invisible</span>
                     {% endif %}
-                    {% else %}
                 <div>
                     <button class="articleAdd__button articleAdd__button--visibility"
-                            title="choose visibility of the article">Invisible
+                            title="choose visibility of the article">{% if post.visibility %}Visible{% else %}Invisible{% endif %}
                     </button>
-                    <input class="input--invisible" name="visibility" id="visibilityArticle" type="number" value="{{ post.visible ?? 0 }}">
+                    <input class="input--invisible" name="visibility" id="visibilityArticle" type="number" value="{{ post.visibility ?? 0 }}">
                 </div>
-                {% endif %}
                 </p>
             </div>
             {#<div class="articleAdd__aside__card">#}
