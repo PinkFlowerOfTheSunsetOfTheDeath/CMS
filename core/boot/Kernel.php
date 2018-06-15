@@ -55,7 +55,6 @@ class Kernel
      */
     public function initializeApplicaton(array $config)
     {
-
         // If website is not initialized
         $path = $_SERVER['PATH_INFO'] ?? '/';
         if (
@@ -71,8 +70,12 @@ class Kernel
         // Configure Website
         $this->configManager->configureWebsite($config);
 
-        $userRepository = new UserRepository();
-        $adminExists = $userRepository->adminExists();
+        try {
+            $userRepository = new UserRepository();
+            $adminExists = $userRepository->adminExists();
+        } catch (\PDOException $e) {
+            $adminExists = false;
+        }
         // If website is initialized but Admin User not created
         if (
             $path !== '/configure'
